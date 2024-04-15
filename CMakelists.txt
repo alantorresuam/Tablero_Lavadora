@@ -9,5 +9,4 @@ set(PICO_BOARD pico_w)
 pico_sdk_init()
 
 add_subdirectory(carga)
-add_subdirectory(centrifugar)
 add_subdirectory(display)
