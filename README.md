@@ -1,3 +1,4 @@
+## **Historias de usuario**
 ### **Pausa/play**
 Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ciclo de lavado para poder agregar o quitar prendas durante el proceso de lavado según sea necesario.
 
