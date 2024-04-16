@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include "pico/stdlib.h"
+#include "botones_temperatura.h"
+
+int main() {
+    stdio_init_all();
+
+    // Inicializar los pines de los botones y los LEDs
+    inicializar_botones_temperatura();
+
+    while (true) {
+        // Verificar el estado de los botones de temperatura y controlar los LEDs correspondientes
+        verificar_botones_temperatura();
+    }
+
+    return 0;
+}
