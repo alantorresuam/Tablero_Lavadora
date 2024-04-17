@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include "pico/stdlib.h"
 
-#define LED_PIN  10 
+#define LED_PIN  14 
 #define CENTRIFUGADO_PIN 14 // Botón para activar el centrifugado
 
 void centrifugar();

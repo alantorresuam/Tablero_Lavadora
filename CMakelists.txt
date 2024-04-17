@@ -1,5 +1,11 @@
-add_executable(lavadora main.c)
+cmake_minimum_required(VERSION 3.13)
 
-target_link_libraries(lavadora pico_stdlib)
+include(pico_sdk_import.cmake)
 
-pico_add_extra_outputs(lavadora)
+project(Tablero_lavadora C CXX ASM)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(PICO_BOARD pico_w)
+pico_sdk_init()
+
+add_subdirectory(botones_temperatura)

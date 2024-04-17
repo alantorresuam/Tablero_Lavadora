@@ -1,10 +1,10 @@
 #include "botones_temperatura.h"
 #include "pico/stdlib.h"
 
-#define BOTON_PIN  14 
-#define LED_FRIO_PIN 10
-#define LED_TIBIO_PIN 11
-#define LED_CALIENTE_PIN 12
+#define BOTON_PIN          2
+#define LED_FRIO_PIN       14
+#define LED_TIBIO_PIN      15
+#define LED_CALIENTE_PIN   16
 
 int contador = 0;
 
