@@ -9,6 +9,4 @@ set(PICO_BOARD pico_w)
 
 pico_sdk_init()
 
-add_subdirectory(Enjuagar)
-add_subdirectory(Lavar)
-add_subdirectory(Pausa_Play)
+add_subdirectory(lavadora)
