@@ -1,30 +1,14 @@
 /**
- * @brief In this section we turn on and off the leds depending of the type of wash load
+ * @brief Turns on the light load LED.
  */
-void seleccionar_carga(int estado_carga);
+void liviana();
 
 /**
- * @brief lasdf
+ * @brief Turns on the medium load LED.
  */
-void encender_led1();
+void media();
 
 /**
- * @brief lsd
+ * @brief Turns on the heavy load LED.
  */
-void encender_led2();
-
-/**
- * @brief  sdf
- */
-void apagar_led1();
-
-/**
- * @brief asdf
- */
-void apagar_led2();
-
-/**
- * @brief asdf
- * @return asdf
- */
-bool verificar_boton_presionado();
+void pesada();
