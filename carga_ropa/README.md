@@ -8,16 +8,16 @@ El tablero de control de la lavadora con las siguientes elecciones dentro de su 
 
 ### -Selección de Tipo de Carga
 
-- **Carga Liviana:** Esta opción es ideal para prendas delicadas o de uso cotidiano que no requieren un lavado intensivo.
-- **Carga Media:** Diseñada para prendas de tamaño y peso moderado, como camisas, pantalones y sábanas.
-- **Carga Pesada:** Pensada para prendas voluminosas o muy sucias que necesitan un lavado más profundo, como toallas, ropa de cama y ropa de trabajo.
+- **Carga Liviana:** La función "liviana()" selecciona el tipo de carga liviana, donde a mi elección se prenderá el led izquierdo asignado.
+- **Carga Media:** La función "media()" selecciona el tipo de carga mediana, donde a mi elección se prenderá el led derecho asignado.
+- **Carga Pesada:** La función "pesada()" selecciona el tipo de carga pesada, donde a mi elección se prenderán ambos leds asignados.
 
 
 ## -Instrucciones de Uso
 
 1. Encienda la lavadora utilizando el interruptor de encendido.
 2. Seleccione el tipo de carga deseada utilizando los botones correspondientes.
-3. Una vez finalizado la elección, prenderá el led correspondiente.
+3. Una vez hecha la elección, prenderá el led correspondiente.
 
 ## Notas Adicionales
 
