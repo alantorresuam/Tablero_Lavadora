@@ -90,3 +90,6 @@ lavar();
 - Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
 
 - Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
+
+# Adicional
+En el teclado matricial, los botones correspondientes a lavar y enjuagar son el 7 y 8 respectivamente.
