@@ -2,19 +2,19 @@
 #include "Tipo_lavado.h"
 
 
-# define LED_PIN11 11 
-# define LED_PIN12 12
-# define LED_PIN13 13
+# define LED_PIN18 18
+# define LED_PIN19 19
+# define LED_PIN20 20
 
 void delicado(){
-    gpio_put(LED_PIN11, 1); // Encender el LED
+    gpio_put(LED_PIN18, 1); // Encender el LED
 }
 
 void normal(){
-    gpio_put(LED_PIN12, 1); // Encender el LED
+    gpio_put(LED_PIN19, 1); // Encender el LED
 }
 
 void fuerte(){
-    gpio_put(LED_PIN13, 1); // Encender el LED    
+    gpio_put(LED_PIN20, 1); // Encender el LED    
 }
 

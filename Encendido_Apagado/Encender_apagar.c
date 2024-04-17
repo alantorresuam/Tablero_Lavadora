@@ -2,13 +2,13 @@
 #include "Encender_Apagar.h"
 #include "pico/stdlib.h"
 
-# define LED_PIN  10 
-# define BUTTON_PIN 15
+# define LED_PIN17  17
+# define BUTTON_PIN1 1
 
 bool encender_apagar(bool encendido){
-    if(!gpio_get(BUTTON_PIN)){
+    if(!gpio_get(BUTTON_PIN1)){
         sleep_ms(1500);
-        if (!gpio_get(BUTTON_PIN) && encendido){
+        if (!gpio_get(BUTTON_PIN1) && encendido){
             apagar();
             return false;
         } else if(!encendido){
@@ -20,9 +20,9 @@ bool encender_apagar(bool encendido){
 }
 
 void encender(){
-    gpio_put(LED_PIN, 1); // Encender el LED
+    gpio_put(LED_PIN17, 1); // Encender el LED
 }
 
 void apagar(){
-    gpio_put(LED_PIN, 0); // Apagar el LED
+    gpio_put(LED_PIN17, 0); // Apagar el LED
 }
