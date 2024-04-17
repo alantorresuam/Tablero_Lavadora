@@ -1,5 +1,7 @@
 #include <stdbool.h>
+#include <carga.h>
 #include "pico/stdlib.h"
+
 
 #define LIGERA 0
 #define MEDIA 1
