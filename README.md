@@ -53,3 +53,45 @@ Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ci
 ### Definición de hecho:
 El botón de pausa/play se encuentra claramente visible en la interfaz de la lavadora y permite al usuario detener temporalmente el ciclo de lavado con un solo toque. Un indicador visual muestra
 si el ciclo está pausado o en curso. Al presionar nuevamente el botón, el ciclo se reanuda desde el punto en que se detuvo.
+
+---
+##  Funcionalidad
+### Funcionalidad de Enjuague
+Esta funcionalidad forma parte de un sistema de control para activar el modo de enjuague de una lavadora. Se encarga de activar el modo de enjuague mediante el control de un LED a una placa Raspberry Pi Pico W.
+
+### Descripción
+La función enjuagar() proporciona la capacidad de activar el modo de enjuague en la lavadora. Cuando se llama a esta función, se enciende un LED conectado al pin GPIO especificado en el código, indicando así que el proceso de enjuague está en curso.
+
+## Uso
+- Se importa el archivo de cabecera Enjuagar.h en su código principal.
+
+#include "Enjuagar.h"
+
+- Se llama a la función enjuagar() en el programa para activar el modo de enjuague.
+
+enjuagar();
+
+## Configuración
+- Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
+
+- Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
+---
+### Funcionalidad de Lavado
+Esta funcionalidad forma parte de un sistema de control para activar el modo de lavado de una lavadora. Se encarga de activar el modo de lavado mediante el control de un LED a una placa Raspberry Pi Pico W.
+
+### Descripción
+La función lavar() proporciona la capacidad de activar el modo de lavado en la lavadora. Cuando se llama a esta función, se enciende un LED conectado al pin GPIO especificado en el código, indicando así que el proceso de lavado está en curso.
+
+## Uso
+- Se importa el archivo de cabecera Lavar.h en su código principal.
+
+#include "Lavar.h"
+
+- Se llama a la función lavar() en el programa para activar el modo de enjuague.
+
+lavar();
+
+## Configuración
+- Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
+
+- Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
