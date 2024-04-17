@@ -64,7 +64,7 @@
 10806	11010	7350240569449321	Enjuagar/CMakeFiles/Enjuagar.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj	fa922b8486bab1cc
 10834	11029	7350240569092677	Enjuagar/CMakeFiles/Enjuagar.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj	533a184bec7235a1
 10913	11110	7350240570380354	Enjuagar/CMakeFiles/Enjuagar.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj	bb80f675eee72255
-42	113	7350261027116868	Pausa_Play/CMakeFiles/Pausa_Play.dir/Pausa_play.c.obj	1181c0d8e4fc570
+30	146	7350262371706440	Pausa_Play/CMakeFiles/Pausa_Play.dir/Pausa_play.c.obj	1181c0d8e4fc570
 12325	12518	7350240584540952	Lavar/CMakeFiles/Lavar.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj	102f8827aaed1fb6
 10974	11235	7350240572001077	Enjuagar/CMakeFiles/Enjuagar.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj	93d04d580cea548f
 11150	11352	7350240572903005	Enjuagar/CMakeFiles/Enjuagar.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj	1c00c74e25c83051
@@ -217,6 +217,4 @@
 118	238	7350259322529735	Pausa_Play/CMakeFiles/Pausa_Play.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj	e00ac5fc8fa55611
 100	291	7350259323045632	Pausa_Play/CMakeFiles/Pausa_Play.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/lib/tinyusb/src/tusb.c.obj	88b69154652cd159
 109	328	7350259323422273	Pausa_Play/CMakeFiles/Pausa_Play.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj	b4643a045883de59
-30	105	7350261688430209	Pausa_Play/CMakeFiles/Pausa_Play.dir/Pausa_play.c.obj	1181c0d8e4fc570
-30	146	7350262371706440	Pausa_Play/CMakeFiles/Pausa_Play.dir/Pausa_play.c.obj	1181c0d8e4fc570
 149	575	7350262374877007	Pausa_Play/Pausa_Play.elf	a00dca2455a30da0
