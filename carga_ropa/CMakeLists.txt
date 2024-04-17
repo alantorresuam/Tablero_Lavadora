@@ -1,7 +1,7 @@
 add_executable(carga_ropa
         carga.c
         #../common/sdk_inclines.S
-        )
+)
 
 # pull in common dependencies
 target_link_libraries(carga_ropa pico_stdlib)

@@ -127,6 +127,9 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 // RELWITHDEBINFO builds.
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
+//No help, variable specified on the command line.
+CMAKE_MODULE_PATH:STRING=C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk-tools
+
 //Path to a program.
 CMAKE_NM:FILEPATH=C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/gcc-arm-none-eabi/bin/arm-none-eabi-nm.exe
 

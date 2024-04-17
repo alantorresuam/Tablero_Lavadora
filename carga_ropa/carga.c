@@ -64,7 +64,7 @@ int main() {
         if(verificar_boton_presionado()) {
             sleep_ms(1500); 
             if(verificar_boton_presionado()) {
-                seleccionar_carga();
+                seleccionar_carga(estado_carga);
             }
         }
     }
