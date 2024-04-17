@@ -7,9 +7,8 @@ Como usuario de una lavadora, deseo poder realizar un ciclo de enjuague para ase
 
 ### Tareas
 - Diseñar e implementar la opción de enjuague en la interfaz de la lavadora.
-- Configurar los parámetros de enjuague, como la duración y la temperatura del agua, según las especificaciones de diseño.
 - Integrar el ciclo de enjuague en la secuencia de operaciones de la lavadora.
-- Realizar pruebas para verificar que el ciclo de enjuague funcione correctamente y elimine eficazmente los residuos de detergente.
+- Realizar pruebas para verificar que el ciclo de enjuague funcione correctamente.
 - Documentar el proceso de enjuague y sus características en la documentación del usuario.
 - Realizar ajustes según sea necesario en base a los resultados de las pruebas.
 
@@ -24,17 +23,13 @@ Como usuario de una lavadora, quiero poder seleccionar la opción de lavado para
 
 ### Tareas
 - Diseñar e implementar un control de selección de lavado en la interfaz de la lavadora.
-- Definir los diferentes ciclos de lavado disponibles (normal, fuerte, delicado, etc.).
-- Integrar un mecanismo para ajustar la duración y la intensidad del ciclo de lavado según la opción seleccionada.
-- Verificar la compatibilidad de los ciclos de lavado con los tipos de prendas y niveles de suciedad.
-- Realizar pruebas de funcionamiento para asegurar que los ciclos de lavado cumplen con los estándares de limpieza esperados.
-- Documentar los distintos ciclos de lavado y sus características para informar al usuario sobre las opciones disponibles.
+- Integrar el ciclo de lavado en la secuencia de operaciones de la lavadora.
+- Realizar pruebas para verificar que el ciclo de lavado funcione correctamente.
+- Documentar el proceso de lavado y sus características en la documentación del usuario.
 - Realizar cualquier ajuste necesario basado en los resultados de las pruebas.
   
 #### Definición de hecho:
-El control de selección de lavado está presente en la interfaz de la lavadora, permitiendo al usuario elegir entre diferentes ciclos de lavado según sus necesidades. 
-Cada ciclo de lavado está diseñado para proporcionar una limpieza efectiva de la ropa, con opciones que incluyen lavado normal, lavado fuerte y lavado delicado, entre otros. 
-La duración y la intensidad de cada ciclo se ajustan automáticamente según la opción seleccionada. Las pruebas realizadas confirman que los ciclos de lavado cumplen con los estándares de limpieza establecidos.
+El ciclo de lavado está disponible como una opción en la interfaz de la lavadora, lo que permite al usuario realizar un lavado adicional después del ciclo principal. Durante el ciclo de lavado, la lavadora llena el tambor con agua limpia y realiza un ciclo de agitación para eliminar los residuos de detergente de la ropa. Se verifica que el ciclo de lavado funcione correctamente y cumpla con los estándares de limpieza esperados.
 
 ## SPRINT 2
 
