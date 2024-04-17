@@ -1,8 +1,6 @@
 # Historias de usuario
 
----
 ## SPRINT 1
----
 
 ## Enjuagar
 Como usuario de una lavadora, deseo poder realizar un ciclo de enjuague para asegurarme de que la ropa quede limpia y sin residuos de detergente después del lavado.
@@ -38,9 +36,7 @@ El control de selección de lavado está presente en la interfaz de la lavadora,
 Cada ciclo de lavado está diseñado para proporcionar una limpieza efectiva de la ropa, con opciones que incluyen lavado normal, lavado fuerte y lavado delicado, entre otros. 
 La duración y la intensidad de cada ciclo se ajustan automáticamente según la opción seleccionada. Las pruebas realizadas confirman que los ciclos de lavado cumplen con los estándares de limpieza establecidos.
 
----
 ## SPRINT 2
----
 
 ## Pausa/play
 Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ciclo de lavado para poder agregar o quitar prendas durante el proceso de lavado según sea necesario.
