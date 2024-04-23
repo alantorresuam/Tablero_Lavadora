@@ -1,5 +1,38 @@
 # Historias de usuario
 
+## SPRINT 1
+
+## Enjuagar
+Como usuario de una lavadora, deseo poder realizar un ciclo de enjuague para asegurarme de que la ropa quede limpia y sin residuos de detergente después del lavado.
+
+### Tareas
+- Diseñar e implementar la opción de enjuague en la interfaz de la lavadora.
+- Integrar el ciclo de enjuague en la secuencia de operaciones de la lavadora.
+- Realizar pruebas para verificar que el ciclo de enjuague funcione correctamente.
+- Documentar el proceso de enjuague y sus características en la documentación del usuario.
+- Realizar ajustes según sea necesario en base a los resultados de las pruebas.
+
+### Definición de hecho:
+El ciclo de enjuague está disponible como una opción en la interfaz de la lavadora, lo que permite al usuario realizar un enjuague adicional después del ciclo de lavado principal. 
+Durante el ciclo de enjuague, la lavadora llena el tambor con agua limpia y realiza un ciclo de agitación para eliminar los residuos de detergente de la ropa. 
+Se verifica que el ciclo de enjuague funcione correctamente y cumpla con los estándares de limpieza esperados.
+
+---
+## Lavar
+Como usuario de una lavadora, quiero poder seleccionar la opción de lavado para limpiar la ropa de manera efectiva.
+
+### Tareas
+- Diseñar e implementar un control de selección de lavado en la interfaz de la lavadora.
+- Integrar el ciclo de lavado en la secuencia de operaciones de la lavadora.
+- Realizar pruebas para verificar que el ciclo de lavado funcione correctamente.
+- Documentar el proceso de lavado y sus características en la documentación del usuario.
+- Realizar cualquier ajuste necesario basado en los resultados de las pruebas.
+  
+#### Definición de hecho:
+El ciclo de lavado está disponible como una opción en la interfaz de la lavadora, lo que permite al usuario realizar un lavado adicional después del ciclo principal. Durante el ciclo de lavado, la lavadora llena el tambor con agua limpia y realiza un ciclo de agitación para eliminar los residuos de detergente de la ropa. Se verifica que el ciclo de lavado funcione correctamente y cumpla con los estándares de limpieza esperados.
+
+## SPRINT 2
+
 ## Pausa/play
 Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ciclo de lavado para poder agregar o quitar prendas durante el proceso de lavado según sea necesario.
 
@@ -17,38 +50,46 @@ El botón de pausa/play se encuentra claramente visible en la interfaz de la lav
 si el ciclo está pausado o en curso. Al presionar nuevamente el botón, el ciclo se reanuda desde el punto en que se detuvo.
 
 ---
+##  Funcionalidad
+### Funcionalidad de Enjuague
+Esta funcionalidad forma parte de un sistema de control para activar el modo de enjuague de una lavadora. Se encarga de activar el modo de enjuague mediante el control de un LED a una placa Raspberry Pi Pico W.
 
-## Enjuagar
-Como usuario de una lavadora, deseo poder realizar un ciclo de enjuague para asegurarme de que la ropa quede limpia y sin residuos de detergente después del lavado.
+### Descripción
+La función enjuagar() proporciona la capacidad de activar el modo de enjuague en la lavadora. Cuando se llama a esta función, se enciende un LED conectado al pin GPIO especificado en el código, indicando así que el proceso de enjuague está en curso.
 
-### Tareas
-- Diseñar e implementar la opción de enjuague en la interfaz de la lavadora.
-- Configurar los parámetros de enjuague, como la duración y la temperatura del agua, según las especificaciones de diseño.
-- Integrar el ciclo de enjuague en la secuencia de operaciones de la lavadora.
-- Realizar pruebas para verificar que el ciclo de enjuague funcione correctamente y elimine eficazmente los residuos de detergente.
-- Documentar el proceso de enjuague y sus características en la documentación del usuario.
-- Realizar ajustes según sea necesario en base a los resultados de las pruebas.
+## Uso
+- Se importa el archivo de cabecera Enjuagar.h en su código principal.
 
-### Definición de hecho:
-El ciclo de enjuague está disponible como una opción en la interfaz de la lavadora, lo que permite al usuario realizar un enjuague adicional después del ciclo de lavado principal. 
-Durante el ciclo de enjuague, la lavadora llena el tambor con agua limpia y realiza un ciclo de agitación para eliminar los residuos de detergente de la ropa. 
-Se verifica que el ciclo de enjuague funcione correctamente y cumpla con los estándares de limpieza esperados.
+#include "Enjuagar.h"
 
+- Se llama a la función enjuagar() en el programa para activar el modo de enjuague.
+
+enjuagar();
+
+## Configuración
+- Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
+
+- Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
 ---
+### Funcionalidad de Lavado
+Esta funcionalidad forma parte de un sistema de control para activar el modo de lavado de una lavadora. Se encarga de activar el modo de lavado mediante el control de un LED a una placa Raspberry Pi Pico W.
 
-## Lavar
-Como usuario de una lavadora, quiero poder seleccionar la opción de lavado para limpiar la ropa de manera efectiva.
+### Descripción
+La función lavar() proporciona la capacidad de activar el modo de lavado en la lavadora. Cuando se llama a esta función, se enciende un LED conectado al pin GPIO especificado en el código, indicando así que el proceso de lavado está en curso.
 
-### Tareas
-- Diseñar e implementar un control de selección de lavado en la interfaz de la lavadora.
-- Definir los diferentes ciclos de lavado disponibles (normal, fuerte, delicado, etc.).
-- Integrar un mecanismo para ajustar la duración y la intensidad del ciclo de lavado según la opción seleccionada.
-- Verificar la compatibilidad de los ciclos de lavado con los tipos de prendas y niveles de suciedad.
-- Realizar pruebas de funcionamiento para asegurar que los ciclos de lavado cumplen con los estándares de limpieza esperados.
-- Documentar los distintos ciclos de lavado y sus características para informar al usuario sobre las opciones disponibles.
-- Realizar cualquier ajuste necesario basado en los resultados de las pruebas.
-  
-#### Definición de hecho:
-El control de selección de lavado está presente en la interfaz de la lavadora, permitiendo al usuario elegir entre diferentes ciclos de lavado según sus necesidades. 
-Cada ciclo de lavado está diseñado para proporcionar una limpieza efectiva de la ropa, con opciones que incluyen lavado normal, lavado fuerte y lavado delicado, entre otros. 
-La duración y la intensidad de cada ciclo se ajustan automáticamente según la opción seleccionada. Las pruebas realizadas confirman que los ciclos de lavado cumplen con los estándares de limpieza establecidos.
+## Uso
+- Se importa el archivo de cabecera Lavar.h en su código principal.
+
+#include "Lavar.h"
+
+- Se llama a la función lavar() en el programa para activar el modo de enjuague.
+
+lavar();
+
+## Configuración
+- Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
+
+- Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
+
+# Adicional
+En el teclado matricial, los botones correspondientes a lavar y enjuagar son el 7 y 8 respectivamente.
