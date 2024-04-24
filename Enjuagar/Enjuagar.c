@@ -1,8 +1,8 @@
 #include "pico/stdlib.h"
 #include "Enjuagar.h"
 
-# define LED_PIN15 15
+# define PIN_ENJUAGAR 16
 
 void enjuagar(){
-    gpio_put(LED_PIN15, 1); // Encender el LED
+    gpio_put(PIN_ENJUAGAR, 16); // Encender el LED
 }

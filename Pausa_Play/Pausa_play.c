@@ -2,7 +2,7 @@
 #include "Pausa_play.h"
 #include "pico/stdlib.h"
 
-# define LED_PIN22  22
+# define PIN_PAUSA_PLAY  23
 # define BUTTON_PIN1 1
 
 bool pausa_play(bool pausado){
@@ -20,9 +20,9 @@ bool pausa_play(bool pausado){
 }
 
 void pausa(){
-    gpio_put(LED_PIN22, 1); // Pausar el LED
+    gpio_put(PIN_PAUSA_PLAY, 1); // Pausar el LED
 }
 
 void play(){
-    gpio_put(LED_PIN22, 0); // Play de el LED
+    gpio_put(PIN_PAUSA_PLAY, 0); // Play de el LED
 }

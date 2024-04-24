@@ -1,8 +1,8 @@
 #include "pico/stdlib.h"
 #include "Lavar.h"
 
-# define LED_PIN16 16
+# define PIN_LAVAR  17
 
 void lavar(){
-    gpio_put(LED_PIN16, 1); // Encender el LED
+    gpio_put(PIN_LAVAR , 17); // Encender el LED
 }
