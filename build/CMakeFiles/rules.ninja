@@ -83,7 +83,7 @@ rule CXX_EXECUTABLE_LINKER__lavadora_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\Raspberry Pi\Pico SDK v1.5.1\cmake\bin\cmake.exe" --regenerate-during-build -SC:\Users\axela\Documents\GitHub\Tablero_Lavadora -BC:\Users\axela\Documents\GitHub\Tablero_Lavadora\build
+  command = "C:\Program Files\Raspberry Pi\Pico SDK v1.5.1\cmake\bin\cmake.exe" --regenerate-during-build -SC:\Users\DELL\Documents\proyectos\Tablero_Lavadora -BC:\Users\DELL\Documents\proyectos\Tablero_Lavadora\build
   description = Re-running CMake...
   generator = 1
 

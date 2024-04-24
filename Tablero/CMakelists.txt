@@ -2,7 +2,13 @@
 add_executable(lavadora
         Tablero.c
         ../Teclado/Teclado.c
+        ../botones_temperatura/boton_temperatura.c
+        ../carga_ropa/carga.c
+        ../Encendido_Apagado/Encender_apagar.c
+        ../Enjuagar/Enjuagar.c
+        ../Lavar/Lavar.c
         ../TipoDeLavado/Tipo_lavado.c
+        ../centrifugado/centrifugado.c
         )
 
 # Pull in common dependencies

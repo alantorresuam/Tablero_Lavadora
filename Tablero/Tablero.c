@@ -65,7 +65,10 @@ int main() {
             printf("EncenderApagar.\n");
             break;
         case '*':
-            printf("Pausa/play.\n");
+            printf("Pausa.\n");
+            break;
+        case '0':
+            printf("Play.\n");
             break;
         default:
             break;
@@ -77,4 +80,3 @@ int main() {
 
     return 0;
 }
->>>>>>> gus:lavadora/Tablero.c
