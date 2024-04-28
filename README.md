@@ -69,7 +69,7 @@ enjuagar();
 ## Configuración
 - Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
 
-- Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
+- Se conecta un LED al pin GPIO especificado en la constante PIN_ENJUAGAR 16.
 ---
 ### Funcionalidad de Lavado
 Esta funcionalidad forma parte de un sistema de control para activar el modo de lavado de una lavadora. Se encarga de activar el modo de lavado mediante el control de un LED a una placa Raspberry Pi Pico W.
@@ -89,7 +89,31 @@ lavar();
 ## Configuración
 - Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
 
-- Se conecta un LED al pin GPIO especificado en la constante LED_PIN15.
+- Se conecta un LED al pin GPIO especificado en la constante PIN_LAVAR 17.
+---
+### Funcionalidad de Pausa/Play
+Esta funcionalidad forma parte de un sistema de control para pausar y reanudar una lavadora. Se encarga de activar el modo pausado o en play mediante el control de un LED a una placa Raspberry Pi Pico W.
+
+### Descripción
+La función pausa_play(bool pausado) proporciona la capacidad de pausar y reanudar la lavadora. Cuando se llama a esta función y el botón conectado al pin GPIO BUTTON_PIN1 se detecta como presionado, se ejecuta una acción dependiendo del estado actual de pausa:
+
+Si el estado de pausa es verdadero (pausado), se espera 1500 milisegundos y se verifica nuevamente si el botón sigue presionado. Si es así, se reanuda la operación llamando a la función play() y se devuelve false, indicando que la operación no está pausada.
+Si el estado de pausa es falso (no pausado), se llama a la función pausa() para pausar la operación y se devuelve true, indicando que la operación está pausada.
+
+## Uso
+- Se importa el archivo de cabecera Pausa_play.h en el programa principal.
+
+#include "Pausa_play.h"
+
+- Se llama a la función pausa_play() en el programa para pausar y reanudar la operación.
+
+bool estado_pausa = false; // Estado inicial: no pausado 
+estado_pausa = pausa_play(estado_pausa); // Pausar o reanudar la operación
+
+## Configuración
+Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
+
+Se conecta un LED al pin GPIO especificado en la constante PIN_PAUSA_PLAY  23.
 
 # Adicional
-En el teclado matricial, los botones correspondientes a lavar y enjuagar son el 7 y 8 respectivamente.
+En el teclado matricial, los botones correspondientes a lavar, enjuagar, pausa y play son el 7, 8, * y 0 respectivamente.
