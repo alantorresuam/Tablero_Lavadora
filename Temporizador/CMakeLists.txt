@@ -1,7 +1,6 @@
 add_executable(Temporizador
         test.c
         temporizador.c
-        Temporizador.c
         )
 
 # Pull in common dependencies

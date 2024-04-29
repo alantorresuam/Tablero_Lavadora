@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lavadora/lavadora.elf"
+			"path" : "Temporizador/Temporizador.elf"
 		}
 	],
 	"backtrace" : 1,
@@ -19,7 +19,7 @@
 		],
 		"files" : 
 		[
-			"lavadora/CMakeLists.txt",
+			"Temporizador/CMakeLists.txt",
 			"C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/rp2_common/boot_stage2/CMakeLists.txt",
 			"C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/rp2_common.cmake"
 		],
@@ -31,13 +31,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 2,
+				"line" : 1,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 9,
+				"line" : 7,
 				"parent" : 0
 			},
 			{
@@ -64,7 +64,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 16,
+				"line" : 14,
 				"parent" : 0
 			},
 			{
@@ -259,7 +259,7 @@
 				},
 				{
 					"backtrace" : 8,
-					"define" : "PICO_TARGET_NAME=\"lavadora\""
+					"define" : "PICO_TARGET_NAME=\"Temporizador\""
 				},
 				{
 					"backtrace" : 2,
@@ -468,7 +468,7 @@
 				5,
 				6,
 				7,
-				8,
+				9,
 				10,
 				11,
 				12,
@@ -484,15 +484,15 @@
 				22,
 				23,
 				24,
-				25,
+				26,
 				27,
-				28,
-				30,
+				29,
+				32,
 				33,
-				34,
+				37,
 				38,
-				39,
-				41,
+				40,
+				44,
 				45,
 				46,
 				47,
@@ -518,8 +518,7 @@
 				67,
 				68,
 				69,
-				70,
-				71
+				70
 			]
 		},
 		{
@@ -701,7 +700,7 @@
 				},
 				{
 					"backtrace" : 8,
-					"define" : "PICO_TARGET_NAME=\"lavadora\""
+					"define" : "PICO_TARGET_NAME=\"Temporizador\""
 				},
 				{
 					"backtrace" : 2,
@@ -894,17 +893,17 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				9,
-				26,
-				29,
+				8,
+				25,
+				28,
+				30,
 				31,
-				32,
+				34,
 				35,
 				36,
-				37,
-				40,
-				42,
-				43
+				39,
+				41,
+				42
 			]
 		},
 		{
@@ -1105,7 +1104,7 @@
 				},
 				{
 					"backtrace" : 8,
-					"define" : "PICO_TARGET_NAME=\"lavadora\""
+					"define" : "PICO_TARGET_NAME=\"Temporizador\""
 				},
 				{
 					"backtrace" : 2,
@@ -1306,7 +1305,7 @@
 			},
 			"sourceIndexes" : 
 			[
-				44
+				43
 			]
 		}
 	],
@@ -1317,7 +1316,7 @@
 			"id" : "bs2_default_padded_checksummed_asm::@bc554eaed616d198a22d"
 		}
 	],
-	"id" : "lavadora::@286181bebf9ce4a0742b",
+	"id" : "Temporizador::@fb2390e03b30411d40a1",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -2102,7 +2101,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-Wl,-Map=lavadora.elf.map",
+				"fragment" : "-Wl,-Map=Temporizador.elf.map",
 				"role" : "flags"
 			},
 			{
@@ -2153,12 +2152,12 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "lavadora",
-	"nameOnDisk" : "lavadora.elf",
+	"name" : "Temporizador",
+	"nameOnDisk" : "Temporizador.elf",
 	"paths" : 
 	{
-		"build" : "lavadora",
-		"source" : "lavadora"
+		"build" : "Temporizador",
+		"source" : "Temporizador"
 	},
 	"sourceGroups" : 
 	[
@@ -2174,7 +2173,7 @@
 				5,
 				6,
 				7,
-				8,
+				9,
 				10,
 				11,
 				12,
@@ -2190,15 +2189,15 @@
 				22,
 				23,
 				24,
-				25,
+				26,
 				27,
-				28,
-				30,
+				29,
+				32,
 				33,
-				34,
+				37,
 				38,
-				39,
-				41,
+				40,
+				43,
 				44,
 				45,
 				46,
@@ -2225,25 +2224,24 @@
 				67,
 				68,
 				69,
-				70,
-				71
+				70
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				9,
-				26,
-				29,
+				8,
+				25,
+				28,
+				30,
 				31,
-				32,
+				34,
 				35,
 				36,
-				37,
-				40,
-				42,
-				43
+				39,
+				41,
+				42
 			]
 		}
 	],
@@ -2252,19 +2250,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "lavadora/Tablero.c",
+			"path" : "Temporizador/test.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Teclado/Teclado.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "carga_ropa/carga.c",
+			"path" : "Temporizador/temporizador.c",
 			"sourceGroupIndex" : 0
 		},
 		{

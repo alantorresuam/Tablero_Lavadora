@@ -580,9 +580,9 @@
 					"source" : "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/rp2_common/boot_stage2",
 					"targetIndexes" : 
 					[
-						0,
 						1,
-						2
+						2,
+						3
 					]
 				},
 				{
@@ -848,7 +848,7 @@
 					"source" : "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/rp2_common/pico_cyw43_driver",
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				},
 				{
@@ -1015,18 +1015,18 @@
 					"source" : "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/docs"
 				},
 				{
-					"build" : "lavadora",
-					"jsonFile" : "directory-lavadora-Debug-9ab62a4e9bbbba05a80b.json",
+					"build" : "Temporizador",
+					"jsonFile" : "directory-Temporizador-Debug-21d69cbc362149a13019.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.13"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
-					"source" : "lavadora",
+					"source" : "Temporizador",
 					"targetIndexes" : 
 					[
-						4
+						0
 					]
 				}
 			],
@@ -1043,10 +1043,10 @@
 						0,
 						81
 					],
-					"name" : "tablero_lavadora",
+					"name" : "Temporizador",
 					"targetIndexes" : 
 					[
-						4
+						0
 					]
 				},
 				{
@@ -1137,10 +1137,10 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						0,
 						1,
 						2,
 						3,
+						4,
 						5,
 						6
 					]
@@ -1148,6 +1148,13 @@
 			],
 			"targets" : 
 			[
+				{
+					"directoryIndex" : 81,
+					"id" : "Temporizador::@fb2390e03b30411d40a1",
+					"jsonFile" : "target-Temporizador-Debug-4e7a88904ee84127c373.json",
+					"name" : "Temporizador",
+					"projectIndex" : 0
+				},
 				{
 					"directoryIndex" : 43,
 					"id" : "bs2_default::@bc554eaed616d198a22d",
@@ -1175,13 +1182,6 @@
 					"jsonFile" : "target-cyw43_driver_picow_cyw43_bus_pio_spi_pio_h-Debug-208d5fbd8885f908aba0.json",
 					"name" : "cyw43_driver_picow_cyw43_bus_pio_spi_pio_h",
 					"projectIndex" : 1
-				},
-				{
-					"directoryIndex" : 81,
-					"id" : "lavadora::@286181bebf9ce4a0742b",
-					"jsonFile" : "target-lavadora-Debug-dcf5a04054028223990d.json",
-					"name" : "lavadora",
-					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 61,

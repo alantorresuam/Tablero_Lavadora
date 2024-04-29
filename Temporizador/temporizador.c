@@ -1,7 +1,7 @@
 #include "temporizador.h"
 #include "pico/stdlib.h"
 #include <stdlib.h>
-#include "pin_list_display.h"
+#include "pin_list.h"
 
 void time_construct(int a[]){
     for(int i = 0; i < PINS_SIZE; i++){

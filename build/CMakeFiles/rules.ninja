@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: tablero_lavadora
+# Project: Temporizador
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -41,7 +41,7 @@ rule ASM_EXECUTABLE_LINKER__bs2_default_Debug
 #############################################
 # Rule for compiling ASM files.
 
-rule ASM_COMPILER__lavadora_Debug
+rule ASM_COMPILER__Temporizador_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
@@ -51,7 +51,7 @@ rule ASM_COMPILER__lavadora_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lavadora_Debug
+rule C_COMPILER__Temporizador_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -61,7 +61,7 @@ rule C_COMPILER__lavadora_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__lavadora_Debug
+rule CXX_COMPILER__Temporizador_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR10B2~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -71,7 +71,7 @@ rule CXX_COMPILER__lavadora_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__lavadora_Debug
+rule CXX_EXECUTABLE_LINKER__Temporizador_Debug
   command = cmd.exe /C "$PRE_LINK && C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR10B2~1.EXE $FLAGS -Wl,--build-id=none $LINK_FLAGS @$RSP_FILE -o $TARGET_FILE  && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   rspfile = $RSP_FILE

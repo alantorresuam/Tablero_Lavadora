@@ -166,6 +166,6 @@ C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/pico-sdk/src/rp2040/hardw
 C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/pico-sdk/src/rp2040/hardware_structs/CMakeFiles/rebuild_cache.dir
 C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/pico-sdk/docs/CMakeFiles/edit_cache.dir
 C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/pico-sdk/docs/CMakeFiles/rebuild_cache.dir
-C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/lavadora/CMakeFiles/lavadora.dir
-C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/lavadora/CMakeFiles/edit_cache.dir
-C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/lavadora/CMakeFiles/rebuild_cache.dir
+C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/Temporizador/CMakeFiles/Temporizador.dir
+C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/Temporizador/CMakeFiles/edit_cache.dir
+C:/Users/axela/Documents/GitHub/Tablero_Lavadora/build/Temporizador/CMakeFiles/rebuild_cache.dir
