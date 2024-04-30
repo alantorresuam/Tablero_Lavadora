@@ -35,7 +35,10 @@ void time_construct(int a[]){
 }
 
 void time_init(){
-
+    for (int i = 0; i < PINS_SIZE_TIME; i++) { 
+    gpio_init(pins[i]);
+    gpio_set_dir(pins[i], GPIO_OUT);
+    }
 }
 
 
@@ -46,6 +49,5 @@ int decrementar(){
 
 
 void actualizar(int decenas, int unidades){
-
 
 }
