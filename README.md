@@ -157,7 +157,7 @@ El periférico leds proporciona la capacidad de controlar diferentes aspectos de
 ### Configuración
 Se utilizaron dos archivos de encabezado (header file), en el archivo Leds.h se tienen las declaraciones de las funciones para controlar la lavadora mediante leds y se definen las constantes relacionadas con las funcionalidades de la lavadora. 
 En el archivo pin_list_leds.h se tienen las definiciones de pines (define), donde se asignan números a los pines GPIO específicos que controlan las diversas funciones de la lavadora. Además, hay algunas funcionalidades que se han agregado, pero no están implementadas como leds.
-### Explicación de cada código:
+### Explicación de las cabezeras:
 #### Archivo uno (lavadora.h):
 - Incluye las bibliotecas estándar stdint.h y stdio.h.
 - Define el tamaño del arreglo leds como 5, utilizando una constante PINS_SIZE_LEDS.
