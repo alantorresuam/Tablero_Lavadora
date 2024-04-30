@@ -46,7 +46,7 @@ void time_init(){
 
 
 int decrementar(){
-    // Se decrementa contador que sea mayor o igual a 10
+    // Se decrementa contador que sea multiplo de 10
     if(digito_unidades == 0 && digito_decenas > 0){
         digito_decenas -= 1;
         digito_unidades = 9;
