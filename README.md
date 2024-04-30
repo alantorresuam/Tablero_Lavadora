@@ -130,6 +130,7 @@ Como usuario de una lavadora, quiero  que los leds me muestren la información 
 ### Definición de hecho:
 Los leds como indicador visual están disponibles como un periférico de la lavadora, lo que permite al usuario visualizar el estado de las funcionalidades de esta. 
 Cuando una funcionalidad está en progreso, la lavadora enciende el led correspondiente a esta funcionalidad, con lo que se verifica que dicha funcionalidad funciona correctamente.
+
 ---
 ##  Funcionalidad
 ### Funcionalidad de Enjuague
