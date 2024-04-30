@@ -1,5 +1,0 @@
-add_executable(lavadora main.c)
-
-target_link_libraries(lavadora pico_stdlib)
-
-pico_add_extra_outputs(lavadora)
