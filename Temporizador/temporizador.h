@@ -1,19 +1,19 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define PINS_SIZE 9
+#define PINS_SIZE_TIME 9
 #define DIGIT_SIZE 10
 
 
 /*@brief Pines para el display */
-static uint32_t pins[PINS_SIZE];
+static uint32_t pins[PINS_SIZE_TIME];
 
 /*@brief Digitos del display*/
 static uint32_t digits[DIGIT_SIZE];
 
 static uint32_t mask;
 
-static uint32_t const time_delay = 50;
+static uint32_t const time_delay = 10;
 
 static uint32_t digito_unidades;
 
