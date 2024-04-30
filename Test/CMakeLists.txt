@@ -1,5 +1,8 @@
 add_executable(Test
         Test.c
+        Teclado.h
+        Teclado.c
+        pin_list_keypad.h
         )
 
 # Pull in common dependencies
