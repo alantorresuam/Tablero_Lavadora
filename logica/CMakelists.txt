@@ -1,0 +1,16 @@
+add_executable(TecladoMatricial
+        Test_general.c
+        Teclado.c
+        temporizador.c
+        leds.c
+        )
+
+# Pull in common dependencies
+target_link_libraries(TecladoMatricial pico_stdlib)
+
+# enable usb output, disable uart output
+pico_enable_stdio_usb(TecladoMatricial 1)
+pico_enable_stdio_uart(TecladoMatricial 0)
+
+# Create map/bin/hex file etc.
+pico_add_extra_outputs(TecladoMatricial)
