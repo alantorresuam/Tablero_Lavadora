@@ -162,3 +162,8 @@ En el archivo pin_list_leds.h se tienen las definiciones de pines (define), dond
 #### Archivo dos (pines.h):
 - Define constantes para los pines utilizados para controlar las diferentes funciones de la lavadora, como encendido/apagado, pausa/play, lavado, enjuague y centrifugado.
 - Se han agregado algunos comentarios que indican otras funcionalidades que podrían haberse implementado, como diferentes niveles de carga y temperaturas.
+
+---
+## Maquetado
+![MAQUETADO_LEDS](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/f5302a09-9c89-47b2-8fe5-e093e5f6c250)
+En el maquetado se puede observar el uso de los GPIO 19-20-21-22-26 para controlar las funcionalidades: encendido/apagado, pausa/play, lavar, enjugar y centrifugar.
