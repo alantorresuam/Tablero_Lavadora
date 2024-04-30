@@ -88,7 +88,7 @@ Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ci
 - Realizar cualquier ajuste necesario basado en los resultados de las pruebas.
   
 ### Definición de hecho:
-El botón de pausa/play se encuentra claramente visible en la interfaz de la lavadora y permite al usuario detener temporalmente el ciclo de lavado con un solo toque. Un indicador visual muestra
+El botón de pausa/play se encuentra visible en la interfaz de la lavadora y permite al usuario detener temporalmente el ciclo de lavado con un solo toque. Un indicador visual muestra
 si el ciclo está pausado o en curso. Al presionar nuevamente el botón, el ciclo se reanuda desde el punto en que se detuvo.
 
 ---
@@ -96,24 +96,26 @@ si el ciclo está pausado o en curso. Al presionar nuevamente el botón, el cicl
 Esta funcionalidad forma parte de un sistema de control para pausar y reanudar una lavadora. Se encarga de activar el modo pausado o en play mediante el control de un LED a una placa Raspberry Pi Pico W.
 
 ### Descripción
-La función pausa_play(bool pausado) proporciona la capacidad de pausar y reanudar la lavadora. Cuando se llama a esta función y el botón conectado al pin GPIO BUTTON_PIN1 se detecta como presionado, se ejecuta una acción dependiendo del estado actual de pausa:
-
-Si el estado de pausa es verdadero (pausado), se espera 1500 milisegundos y se verifica nuevamente si el botón sigue presionado. Si es así, se reanuda la operación llamando a la función play() y se devuelve false, indicando que la operación no está pausada.
-Si el estado de pausa es falso (no pausado), se llama a la función pausa() para pausar la operación y se devuelve true, indicando que la operación está pausada.
+La función play() proporciona la capacidad de reanudar la lavadora. Cuando se llama a esta función, se activa el LED asociado a play, indicando que la lavadora está funcionando y realizando su ciclo de lavado.
+La función pausa() proporciona la capacidad de pausar la lavadora. Cuando se llama a esta función, se activa el LED asociado a pausar, indicando que la lavadora se detiene temporalmente y se puede reanudar posteriormente.
 
 ### Uso
-- Se importa el archivo de cabecera Pausa_play.h en el programa principal.
+- Se importa el archivo de cabecera Leds.h en el programa principal.
 
-#include "Pausa_play.h"
+#include "Leds.h"
 
-- Se llama a la función pausa_play() en el programa para pausar y reanudar la operación.
+- Se llama a la función pausa() o play() en el programa para pausar o reanudar la operación.
 
-bool estado_pausa = false; // Estado inicial: no pausado 
-estado_pausa = pausa_play(estado_pausa); // Pausar o reanudar la operación
+- void play(){
+    gpio_put(leds[1], 1);
+}
+- void pausa(){
+    gpio_put(leds[1], 0);
+}
 
 ### Configuración
 - Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
-- Se conecta un LED al pin GPIO especificado en la constante PIN_PAUSA_PLAY  23.
+- Se conecta un LED al pin GPIO especificado en la cabezera pin_list_leds.h para la constante PIN_PAUSA_PLAY 20.
 ---
 ## LEDS
 Como usuario de una lavadora, quiero  que los leds me muestren la información correspondiente a la funcionalidad de la lavadora para poder monitorear el estado de esta.
@@ -166,4 +168,4 @@ En el archivo pin_list_leds.h se tienen las definiciones de pines (define), dond
 ---
 ## Maquetado
 ![MAQUETADO_LEDS](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/f5302a09-9c89-47b2-8fe5-e093e5f6c250)
-En el maquetado se puede observar el uso de los GPIO 19-20-21-22-26 para controlar las funcionalidades: encendido/apagado, pausa/play, lavar, enjugar y centrifugar.
+En el maquetado se puede observar el uso de los GPIO 19-20-21-22-26 para controlar las funcionalidades encendido/apagado, pausa/play, lavar, enjugar y centrifugar con los leds correspondientes.
