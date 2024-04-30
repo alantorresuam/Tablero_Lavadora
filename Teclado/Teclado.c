@@ -38,3 +38,22 @@ void keypad_init() {
         gpio_pull_down(COLS_PINS[i]);
     }
 }
+
+char read_keypad() {
+    // Escanear las filas
+    for (int i = 0; i < ROWS; i++) {
+        gpio_put(ROWS_PINS[i], 1);
+
+        // Leer las columnas
+        for (int j = 0; j < COLS; j++) {
+            if (gpio_get(COLS_PINS[j]) == 1) {
+                gpio_put(ROWS_PINS[i], 0); 
+                return KEYS[i][j]; 
+            }
+        }
+
+        gpio_put(ROWS_PINS[i], 0); 
+    }
+
+    return '\0'; 
+}
