@@ -129,7 +129,7 @@ El código sigue el flujo de actividades definido en la documentación del proye
 Prototipo de Alambrado del Circuito
 Se hace referencia al prototipo de alambrado en su primera versión para la disposición de los componentes y la asignación de pines de la Raspberry Pi Pico W.
 
-
+![alt text](Tablero.jpg)
 
 Uso de Pines de la Raspberry Pi Pico W 
 Se detalla la asignación de pines de la Raspberry Pi Pico W D para cada componente del sistema, como el teclado matricial, el display de 7 segmentos y los botones de control de la lavadora.
