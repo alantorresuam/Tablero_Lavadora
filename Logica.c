@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include <string.h>
+#include "pin_list_leds.h"
 
 int main()
 {
@@ -17,9 +18,12 @@ int main()
     int pinsTime[] = {PIN_A, PIN_B, PIN_C, PIN_D, PIN_E, PIN_F, PIN_G, PIN_DIGITO1, PIN_DIGITO2};
     time_construct(pinsTime);
 
+    int pinsled[] = { PIN_ENCENDIDO_APAGADO, PIN_PAUSA_PLAY, PIN_LAVAR, PIN_ENJUAGAR, PIN_CENTRIFUGAR};
+    construct_leds(pinsled);
 
     keypad_init();
     time_init();
+    leds_init();
 
     int tiempo = 0;
     int segundo = 0;
@@ -63,8 +67,8 @@ int main()
                     }
                     if(opcion == '8'){ //seleccion_enjuagar
                         seleccion_enjuagar = true;
-                        tiempo_enjuagar = 30;
                         enjuagar();
+                        tiempo_enjuagar = 30;
                     }
                     if(opcion == '9'){ //seleccion_centrifugar
                         seleccion_centrifugar = true;
@@ -159,6 +163,7 @@ int main()
                         if(lavado_seleccionado && carga_seleccionada){
                             if(opcion == '*'){
                                 seleccion_pausa = false;
+                                play();
                                 enproceso = true;
                                 sleep_ms(1000);
                                 tiempo = tiempo + tiempo_lavar + tiempo_enjuagar + tiempo_centrifugar;
@@ -191,6 +196,7 @@ int main()
                     break;
                 }
                 if(opcion == '0'){
+                    pausa();
                     seleccion_pausa = true;
                 }
             }
