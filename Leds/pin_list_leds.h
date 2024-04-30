@@ -2,7 +2,7 @@
 #define PIN_PAUSA_PLAY 20			    // Pausa/Play
 #define PIN_LAVAR 21                    // Lavar
 #define PIN_ENJUAGAR 22		            // Enjuagar
-#define PIN_CENTRIFUGAR 23		        // Centrifugar
+#define PIN_CENTRIFUGAR 26		        // Centrifugar
 
 // Funcionalidades agregadas sin LED
 //#define PIN_CARGA_LIVIANA 10			// Carga liviana
