@@ -31,24 +31,6 @@ Como usuario de una lavadora, quiero poder seleccionar la opción de lavado para
 #### Definición de hecho:
 El ciclo de lavado está disponible como una opción en la interfaz de la lavadora, lo que permite al usuario realizar un lavado adicional después del ciclo principal. Durante el ciclo de lavado, la lavadora llena el tambor con agua limpia y realiza un ciclo de agitación para eliminar los residuos de detergente de la ropa. Se verifica que el ciclo de lavado funcione correctamente y cumpla con los estándares de limpieza esperados.
 
-## SPRINT 2
-
-## Pausa/play
-Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ciclo de lavado para poder agregar o quitar prendas durante el proceso de lavado según sea necesario.
-
-### Tareas
-- Diseñar e implementar un botón de pausa/play en la interfaz de la lavadora.
-- Integrar un indicador visual que muestre claramente si el ciclo de lavado está en pausa o en curso.
-- Adquirir los materiales necesarios para la implementación del botón y el indicador visual.
-- Cablear el prototipo según las especificaciones de diseño, asegurando su compatibilidad con el sistema de control de la lavadora.
-- Realizar pruebas exhaustivas para garantizar el correcto funcionamiento del botón de pausa/play y del indicador visual.
-- Documentar el funcionamiento del botón de pausa/play y su integración con el ciclo de lavado.
-- Realizar cualquier ajuste necesario basado en los resultados de las pruebas.
-  
-### Definición de hecho:
-El botón de pausa/play se encuentra claramente visible en la interfaz de la lavadora y permite al usuario detener temporalmente el ciclo de lavado con un solo toque. Un indicador visual muestra
-si el ciclo está pausado o en curso. Al presionar nuevamente el botón, el ciclo se reanuda desde el punto en que se detuvo.
-
 ---
 ##  Funcionalidad
 ### Funcionalidad de Enjuague
@@ -90,6 +72,25 @@ lavar();
 - Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
 
 - Se conecta un LED al pin GPIO especificado en la constante PIN_LAVAR 17.
+  
+## SPRINT 2
+
+## Pausa/play
+Como usuario de una lavadora, quiero tener la opción de pausar y reanudar el ciclo de lavado para poder agregar o quitar prendas durante el proceso de lavado según sea necesario.
+
+### Tareas
+- Diseñar e implementar un botón de pausa/play en la interfaz de la lavadora.
+- Integrar un indicador visual que muestre claramente si el ciclo de lavado está en pausa o en curso.
+- Adquirir los materiales necesarios para la implementación del botón y el indicador visual.
+- Cablear el prototipo según las especificaciones de diseño, asegurando su compatibilidad con el sistema de control de la lavadora.
+- Realizar pruebas exhaustivas para garantizar el correcto funcionamiento del botón de pausa/play y del indicador visual.
+- Documentar el funcionamiento del botón de pausa/play y su integración con el ciclo de lavado.
+- Realizar cualquier ajuste necesario basado en los resultados de las pruebas.
+  
+### Definición de hecho:
+El botón de pausa/play se encuentra claramente visible en la interfaz de la lavadora y permite al usuario detener temporalmente el ciclo de lavado con un solo toque. Un indicador visual muestra
+si el ciclo está pausado o en curso. Al presionar nuevamente el botón, el ciclo se reanuda desde el punto en que se detuvo.
+
 ---
 ### Funcionalidad de Pausa/Play
 Esta funcionalidad forma parte de un sistema de control para pausar y reanudar una lavadora. Se encarga de activar el modo pausado o en play mediante el control de un LED a una placa Raspberry Pi Pico W.
