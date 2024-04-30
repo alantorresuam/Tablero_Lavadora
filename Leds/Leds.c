@@ -1,135 +1,146 @@
-#include <stdbool.h>
-#include "Leds.h"
+#include "hardware/gpio.h"
+#include "leds.h"
 #include "pico/stdlib.h"
+#include <stdlib.h>
+#include <stdio.h>
 
+void construct_leds(int a[]){
+    for(int i = 0; i < PINS_SIZE_LEDS; i++){
+        leds[i] = a[i];
+    }
+}
+
+void leds_init(){
+    for (int i = 0; i < PINS_SIZE_LEDS; i++) { 
+        gpio_init(leds[i]);
+        gpio_set_dir(leds[i], GPIO_OUT);
+    }
+}
 
 // INICIO ENCENDER_APAGAR
-# define BUTTON_PIN1 1
-
-bool encender_apagar(bool encendido){
-    if(!gpio_get(BUTTON_PIN1)){
-        sleep_ms(1500);
-        if (!gpio_get(BUTTON_PIN1) && encendido){
-            apagar();
-            return false;
-        } else if(!encendido){
-            encender();
-            return true;
-        }
-    }
-    return encendido;
-}
-
-void encender(){
-    gpio_put(PIN_ENCENDIDO_APAGADO, 1); // Encender el LED
-}
-
+/**
+ * @brief Turns off the washing machine.
+ */
 void apagar(){
-    gpio_put(PIN_ENCENDIDO_APAGADO, 0); // Apagar el LED
+    gpio_put(leds[0], 0);
+}
+
+/**
+ * @brief Turns on the washing machine.
+ */
+void encender(){
+    gpio_put(leds[0], 1);
 }
 // FIN ENCENDER_APAGAR
 
 
-// INICIO TEMPERATURA (Agua caliente/tibia/fría)
-void fria(){
-    gpio_put(PIN_TEMPERATURA_FRIA, 1); // Encender el LED
-    gpio_put(PIN_TEMPERATURA_TIBIA, 0);
-    gpio_put(PIN_TEMPERATURA_CALIENTE, 0);
+// INICIO PLAY_PAUSA
+/**
+ * @brief Turns in play the washing machine.
+ */
+void play(){
+    gpio_put(leds[1], 1);
 }
 
-void tibia(){
-    gpio_put(PIN_TEMPERATURA_TIBIA, 1); // Encender el LED
-    gpio_put(PIN_TEMPERATURA_FRIA, 0);
-    gpio_put(PIN_TEMPERATURA_CALIENTE, 0);
+/**
+ * @brief Turns in pausa the washing machine.
+ */
+void pausa(){
+    gpio_put(leds[1], 0);
 }
-
-void caliente(){
-    gpio_put(PIN_TEMPERATURA_CALIENTE, 1); // Encender el LED  
-    gpio_put(PIN_TEMPERATURA_FRIA, 0);
-    gpio_put(PIN_TEMPERATURA_TIBIA, 0);  
-}
-// FIN TEMPERATURA (Agua caliente/tibia/fría)
+// FIN PLAY_PAUSA
 
 
-// INICIO LAVAR
+//  INICIO LAVAR
 void lavar(){
-    gpio_put(PIN_LAVAR , 17); // Encender el LED
+    gpio_put(leds[2], 1);
 }
-// FIN LAVAR
+//  FIN LAVAR
 
 
-// INICIO ENJUAGAR
+//  INICIO ENJUAGAR
 void enjuagar(){
-    gpio_put(PIN_ENJUAGAR, 16); // Encender el LED
+    gpio_put(leds[3], 1);
 }
-// FIN ENJUAGAR
+//  FIN ENJUAGAR
 
 
 // INICIO CENTRIFUGADO
 void centrifugado(){
-    gpio_put(PIN_CENTRIFUGAR, 1); // Encender el LED
+    gpio_put(leds[4], 1);
 }
 // FIN CENTRIFUGADO
 
 
-// INICIO PAUSA_PLAY
-# define BUTTON_PIN2 2
-
-bool pausa_play(bool pausado){
-    if(!gpio_get(BUTTON_PIN2)){
-        sleep_ms(1500);
-        if (!gpio_get(BUTTON_PIN2) && pausado){
-            play();
-            return false;
-        } else if(!pausado){
-            pausa();
-            return true;
-        }
-    }
-    return pausado;
+//  INICIO TEMPERATURA (Agua caliente/tibia/fría)
+/**
+ * @brief ENCENDER LED DE AGUA FRIA.
+ */
+void fria(){
+    printf("Agua fria\n");
 }
 
-void pausa(){
-    gpio_put(PIN_PAUSA_PLAY, 1); // Pausar el LED
+/**
+ * @brief ENCENDER LED DE AGUA TIBIA.
+ */
+void tibia(){
+    printf("Agua tibia\n");
+
 }
 
-void play(){
-    gpio_put(PIN_PAUSA_PLAY, 0); // Play de el LED
+/**
+ * @brief ENCENDER LED DE AGUA CALIENTE.
+ */
+void caliente(){
+    printf("Agua caliente\n");
+
 }
-// FIN PAUSA_PLAY
+//  FIN TEMPERATURA (Agua caliente/tibia/fría)
 
 
 // INICIO TIPO_LAVADO (normal/fuerte/ropa delicada)
+/**
+ * @brief Turns on the delicate washing mode LED.
+ */
 void delicado(){
-    gpio_put(PIN_LAVADO_DELICADO, 1); // Encender el LED
+    printf("Lavado delicado\n");
 }
 
+/**
+ * @brief Turns on the normal washing mode LED.
+ */
 void normal(){
-    gpio_put(PIN_LAVADO_NORMAL, 1); // Encender el LED
+    printf("Lavado normal\n");
 }
 
+/**
+ * @brief Turns on the strong washing mode LED.
+ */
 void fuerte(){
-    gpio_put(PIN_LAVADO_FUERTE, 1); // Encender el LED    
+    printf("Lavado fuerte\n");
 }
 // FIN TIPO_LAVADO (normal/fuerte/ropa delicada)
 
 
 // INCIO CARGA (liviana/media/pesada)
+/**
+ * @brief Turns on the light load LED.
+ */
 void liviana(){
-    gpio_put(PIN_CARGA_MEDIANA, 0); // Apagar el LED
-    gpio_put(PIN_CARGA_PESADA, 0); // Apagar el LED
-    gpio_put(PIN_CARGA_LIVIANA, 1); // Encender el LED
+    printf("Carga liviana\n");
 }
 
+/**
+ * @brief Turns on the medium load LED.
+ */
 void media(){
-    gpio_put(PIN_CARGA_LIVIANA, 0); // Apagar el LED
-    gpio_put(PIN_CARGA_PESADA, 0); // Apagar el LED
-    gpio_put(PIN_CARGA_MEDIANA, 1); // Encender el LED
+    printf("Carga media\n");
 }
 
+/**
+ * @brief Turns on the heavy load LED.
+ */
 void pesada(){
-    gpio_put(PIN_CARGA_LIVIANA, 0); // Apagar el LED
-    gpio_put(PIN_CARGA_MEDIANA, 0); // Apagar el LED
-    gpio_put(PIN_CARGA_PESADA, 1); // Encender el LED 
+    printf("Carga pesada\n");
 }
 // FIN CARGA (liviana/media/pesada)

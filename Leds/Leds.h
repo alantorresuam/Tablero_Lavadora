@@ -1,25 +1,15 @@
-#define PIN_CARGA_LIVIANA 10			// Carga liviana
-#define PIN_CARGA_MEDIANA 11			// Carga mediana
-#define PIN_CARGA_PESADA 12			    // Carga pesada
-#define PIN_TEMPERATURA_FRIA 13		    // Temperatura fría
-#define PIN_TEMPERATURA_TIBIA 14		// Temperatura tibia
-#define PIN_TEMPERATURA_CALIENTE 15	    // Temperatura caliente
-#define PIN_ENJUAGAR 16				    // Enjuagar
-#define PIN_LAVAR 17					// Lavar
-#define PIN_ENCENDIDO_APAGADO 18		// Encendido/Apagado
-#define PIN_LAVADO_DELICADO 19		    // Lavado delicado
-#define PIN_LAVADO_NORMAL 20			// Lavado normal
-#define PIN_LAVADO_FUERTE 21			// Lavado fuerte
-#define PIN_CENTRIFUGAR 22			    // Centrifugar
-#define PIN_PAUSA_PLAY 23				// Pausa/Play
+#include <stdint.h>
+#include <stdio.h>
+
+#define PINS_SIZE_LEDS 5
+
+static uint32_t leds[PINS_SIZE_LEDS];
+
+void construct_leds();
+
+void leds_init();
 
 // INICIO ENCENDER_APAGAR
-/**
- * @brief This function turns on the washing machine and indicates that the washing machine is on.
- * @return true if the washing machine is successfully turned on, false otherwise.
- */
-bool encender_apagar(bool encendido);
-
 /**
  * @brief Turns off the washing machine.
  */
@@ -32,22 +22,17 @@ void encender();
 // FIN ENCENDER_APAGAR
 
 
-//  INICIO Temperatura (Agua caliente/tibia/fría)
+// INICIO PAUSA_PLAY
 /**
- * @brief ENCENDER LED DE AGUA FRIA.
+ * @brief Turns in play the washing machine.
  */
-void fria();
+void play();
 
 /**
- * @brief ENCENDER LED DE AGUA TIBIA.
+ * @brief Turns in pausa the washing machine.
  */
-void tibia();
-
-/**
- * @brief ENCENDER LED DE AGUA CALIENTE.
- */
-void caliente();
-//  FIN Temperatura (Agua caliente/tibia/fría)
+void pausa();
+// FIN PAUSA_PLAY
 
 
 //  INICIO LAVAR
@@ -65,19 +50,22 @@ void centrifugado();
 // FIN CENTRIFUGADO
 
 
-// INICIO PAUSA_PLAY
-bool pausa_play(bool encendido);
+//  INICIO TEMPERATURA (Agua caliente/tibia/fría)
+/**
+ * @brief ENCENDER LED DE AGUA FRIA.
+ */
+void fria();
 
 /**
- * @brief Turns in play the washing machine.
+ * @brief ENCENDER LED DE AGUA TIBIA.
  */
-void play();
+void tibia();
 
 /**
- * @brief Turns in pausa the washing machine.
+ * @brief ENCENDER LED DE AGUA CALIENTE.
  */
-void pausa();
-// FIN PAUSA_PLAY
+void caliente();
+//  FIN TEMPERATURA (Agua caliente/tibia/fría)
 
 
 // INICIO TIPO_LAVADO (normal/fuerte/ropa delicada)
