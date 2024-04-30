@@ -106,10 +106,12 @@ La función pausa() proporciona la capacidad de pausar la lavadora. Cuando se ll
 
 - Se llama a la función pausa() o play() en el programa para pausar o reanudar la operación.
 
-- void play(){
+void play(){
     gpio_put(leds[1], 1);
 }
-- void pausa(){
+
+---
+void pausa(){
     gpio_put(leds[1], 0);
 }
 
