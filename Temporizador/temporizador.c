@@ -44,7 +44,17 @@ void time_init(){
 
 
 int decrementar(){
+    if(digito_unidades == 0 && digito_decenas > 0){
+        digito_decenas -= 1;
+        digito_unidades = 9;
+    }
+    else if(digito_decenas == 0 && digito_unidades == 0){
+        return 0;
+    } else{
+        digito_unidades -=1;
+    }
 
+    return (digito_decenas * 10) + digito_unidades;
 }
 
 
