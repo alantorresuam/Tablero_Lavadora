@@ -9,6 +9,4 @@ set(PICO_BOARD pico_w)
 
 pico_sdk_init()
 
-add_subdirectory(VaciarDepositoDePelusa)
-add_subdirectory(TipoDeLavado)
-add_subdirectory(Encendido_Apagado)
+add_subdirectory(Teclado)
