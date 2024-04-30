@@ -24,3 +24,17 @@ void keypad_construct(const int a[]){
         }
     }
 }
+
+// Inicializar los puestos del teclado
+void keypad_init() {
+    for (int i = 0; i < ROWS; i++) {
+        gpio_init(ROWS_PINS[i]);
+        gpio_set_dir(ROWS_PINS[i], GPIO_OUT);
+    }
+
+    for (int i = 0; i < COLS; i++) {
+        gpio_init(COLS_PINS[i]);
+        gpio_set_dir(COLS_PINS[i], GPIO_IN);
+        gpio_pull_down(COLS_PINS[i]);
+    }
+}
