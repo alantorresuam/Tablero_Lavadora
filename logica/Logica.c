@@ -2,7 +2,7 @@
 #include "temporizador.h"
 #include "leds.h"
 #include "pin_list_display.h"
-#include "pin_list.h"
+#include "pin_list_keypad.h"
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include <string.h>
