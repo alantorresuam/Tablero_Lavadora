@@ -151,3 +151,14 @@ El periférico leds proporciona la capacidad de controlar diferentes aspectos de
 - delicado(), normal(), fuerte(): Estas funciones encienden los LEDs correspondientes a los modos de lavado (delicado, normal, fuerte) y también imprimen un mensaje indicando el modo de lavado seleccionado en la consola.
 - liviana(), media(), pesada(): Estas funciones encienden los LEDs correspondientes a las opciones de carga (liviana, media, pesada) y también imprimen un mensaje indicando la carga seleccionada en la consola.
 ### Configuración
+Se utilizaron dos archivos de encabezado (header file), en el archivo Leds.h se tienen las declaraciones de las funciones para controlar la lavadora mediante leds y se definen las constantes relacionadas con las funcionalidades de la lavadora. 
+En el archivo pin_list_leds.h se tienen las definiciones de pines (define), donde se asignan números a los pines GPIO específicos que controlan las diversas funciones de la lavadora. Además, hay algunas funcionalidades que se han agregado, pero no están implementadas como leds.
+### Explicación de cada código:
+#### Archivo uno (lavadora.h):
+- Incluye las bibliotecas estándar stdint.h y stdio.h.
+- Define el tamaño del arreglo leds como 5, utilizando una constante PINS_SIZE_LEDS.
+- Declara un conjunto de funciones que representan las diferentes operaciones que se pueden realizar con la lavadora, como encender y apagar (encender() y apagar()), pausar y reanudar (pausa() y play()), lavar (lavar()), enjuagar (enjuagar()), centrifugar (centrifugado()), seleccionar la temperatura del agua (fria(), tibia(), y caliente()), seleccionar el tipo de lavado (delicado(), normal(), y fuerte()), y seleccionar el nivel de carga (liviana(), media(), y pesada()).
+- Cada función tiene una breve descripción de lo que hace documentada en el código para asi entender su propósito.
+#### Archivo dos (pines.h):
+- Define constantes para los pines utilizados para controlar las diferentes funciones de la lavadora, como encendido/apagado, pausa/play, lavado, enjuague y centrifugado.
+- Se han agregado algunos comentarios que indican otras funcionalidades que podrían haberse implementado, como diferentes niveles de carga y temperaturas.
