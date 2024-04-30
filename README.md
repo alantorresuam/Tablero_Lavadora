@@ -112,11 +112,9 @@ bool estado_pausa = false; // Estado inicial: no pausado
 estado_pausa = pausa_play(estado_pausa); // Pausar o reanudar la operación
 
 ### Configuración
-Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
-
-Se conecta un LED al pin GPIO especificado en la constante PIN_PAUSA_PLAY  23.
+- Se debe tener la biblioteca pico/stdlib.h incluida en el entorno de desarrollo.
+- Se conecta un LED al pin GPIO especificado en la constante PIN_PAUSA_PLAY  23.
 ---
-
 
 # Adicional
 En el teclado matricial, los botones correspondientes a lavar, enjuagar, pausa y play son el 7, 8, * y 0 respectivamente.
