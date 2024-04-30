@@ -78,5 +78,5 @@ void actualizar(int decenas, int unidades): Esta función actualiza la visualiza
  4) void actualizar(int decenas, int unidades);
 
 ## Maquetado
-![alt text](image.png)
+![alt text](Temporizador/image.png)
 Como se puede observar, tengo los GPIO 10-16 para controlar los segmentos individuales del display, mientras que tengo los GPIO 17 y 18 para controlar que display se utilizará.
