@@ -70,3 +70,30 @@ int main()
 
                     //Tipo lavado
                     if(!lavado_seleccionado){
+                        if(lavar){
+                            if (opcion == '1')
+                            {
+                                lavado_seleccionado = true;
+                                strcpy(tipo_lavado, "\nLavado: delicado\t");
+                            }
+                            if (opcion == '2')
+                            {
+                                lavado_seleccionado = true;
+                                strcpy(tipo_lavado, "\nLavado: normal\t");
+                            }
+                            if (opcion == '3')
+                            {
+                                lavado_seleccionado = true;
+                                strcpy(tipo_lavado, "\nLavado: fuerte\t");
+                            }
+                            
+                        }
+                    }
+
+                    //Enjuagar y centrifugar 
+                    if(enjuagar){
+                        strcpy(char_enjuagar, "//\tEnjuagar\t");   
+                    }
+                    if(centrifugar){
+                        strcpy(char_centrifugar, "//\tCentrifugar\t");
+                    }
