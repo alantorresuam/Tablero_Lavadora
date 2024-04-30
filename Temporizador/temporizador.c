@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// Prepara el temporizador para su uso
 void time_construct(int a[]){
     for(int i = 0; i < PINS_SIZE_TIME; i++){
         pins[i] = a[i];
@@ -34,6 +35,7 @@ void time_construct(int a[]){
 
 }
 
+// Inicializa los pines GPIO necesarios
 void time_init(){
     for (int i = 0; i < PINS_SIZE_TIME; i++) { 
     gpio_init(pins[i]);
@@ -44,13 +46,17 @@ void time_init(){
 
 
 int decrementar(){
+    // Se decrementa contador que sea mayor o igual a 10
     if(digito_unidades == 0 && digito_decenas > 0){
         digito_decenas -= 1;
         digito_unidades = 9;
     }
+    // Una vez que se llegué a 0 se mantiene así
     else if(digito_decenas == 0 && digito_unidades == 0){
         return 0;
-    } else{
+    } 
+    // Se decrementan unidades en general
+    else{
         digito_unidades -=1;
     }
 
@@ -59,5 +65,35 @@ int decrementar(){
 
 
 void actualizar(int decenas, int unidades){
+    digito_decenas = decenas;
+    digito_unidades = unidades;
+
+    // Calculamos la máscara para el dígito de decenas
+    uint32_t mask_decenas = 0;
+    for(int i = 0; i < PINS_SIZE_TIME-2; i++){
+        uint32_t shift_mask = digits[decenas] >> i;
+        shift_mask = shift_mask & 1;
+        mask_decenas = mask_decenas | (shift_mask << pins[i]);
+    }
+    // Activamos los pines correspondientes al dígito de decenas
+    gpio_set_mask(mask_decenas);
+    gpio_put(digito1, 0);
+    gpio_put(digito2, 1);
+    sleep_ms(time_delay);
+    gpio_clr_mask(mask_decenas);
+    
+    // Calculamos la máscara para el dígito de unidades
+    uint32_t mask_unidades = 0;
+    for(int i = 0; i < PINS_SIZE_TIME-2; i++){
+        uint32_t shift_mask = digits[unidades] >> i;
+        shift_mask = shift_mask & 1;
+        mask_unidades = mask_unidades | (shift_mask << pins[i]); 
+    }
+    // Activamos los pines correspondientes al dígito de unidades
+    gpio_set_mask(mask_unidades);
+    gpio_put(digito1, 1);
+    gpio_put(digito2, 0);
+    sleep_ms(time_delay);
+    gpio_clr_mask(mask_unidades);
 
 }
