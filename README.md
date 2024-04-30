@@ -69,6 +69,7 @@ void actualizar(int decenas, int unidades): Esta función actualiza la visualiza
 
 
 ## Uso
+- Se tienen que tener los archivos temporizador.h, temporizador.c y pin_list_display.h para poder utilizarlos en el directorio de implementación.
 - Se debe de importar el archivo pin_list.h donde se definen los pines
 - Se debe de importar el archivo temporizador.h donde se declarán las variables y funciones necesarias para el funcionamiento.
 - Se debe de importar el archivo temporizador.c donde vienen los métodos que se quieren utilizar, los que serán:

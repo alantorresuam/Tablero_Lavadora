@@ -1,5 +1,5 @@
 #include "temporizador.h"
-#include "pin_list.h"
+#include "pin_list_display.h"
 #include <stdio.h>
 #include "pico/stdlib.h"
 
