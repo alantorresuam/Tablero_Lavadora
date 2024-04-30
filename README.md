@@ -137,7 +137,7 @@ Cuando una funcionalidad está en progreso, la lavadora enciende el led correspo
 
 ---
 ##  Funcionalidad
-### Funcionalidad de Enjuague
+### Funcionalidad de LEDS
 Esta funcionalidad forma parte de un sistema de control para una lavadora. Utilizando una placa Raspberry Pi Pico W se diseñó un periférico para el control de los leds.
 ### Descripción
 El periférico leds proporciona la capacidad de controlar diferentes aspectos de una lavadora utilizando leds para indicar el estado actual de las opciones seleccionadas. Las funciones proporcionadas permiten encender y apagar los diferentes componentes de la lavadora y seleccionar diferentes modos y opciones. Cuando se usa este periférico, se enciende un LED correspondiente a una funcionalidad conectada al pin GPIO especificado en el código, indicando así que está en proceso.
