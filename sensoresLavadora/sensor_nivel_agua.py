@@ -1,7 +1,8 @@
 from machine import ADC, Pin
 
 def init_nivel_agua():
-    return #
+    adc = ADC(Pin(26))
+    return adc
 
 def leer_nivel_agua(adc):
     return #
