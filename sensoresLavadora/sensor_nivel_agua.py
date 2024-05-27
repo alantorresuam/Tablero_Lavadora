@@ -10,4 +10,11 @@ def leer_nivel_agua(adc):
     return value_10bit
 
 def interpretar_nivel_agua(value):
-    return #
+    if value < 300:
+        return "seco"
+    elif 300 <= value < 530:
+        return "bajo"
+    elif 530 <= value < 560:
+        return "medio"
+    else:
+        return "alto"
