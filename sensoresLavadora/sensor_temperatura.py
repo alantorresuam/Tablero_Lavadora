@@ -15,7 +15,11 @@ def obtener_temperaturas(ds_sensor, roms):
     temps = [ds_sensor.read_temp(rom) for rom in roms]
     return temps
 
-
 def nivel_temperatura(temp):
+    if temp < 18:
+        return "baja"
+    elif 18 <= temp <= 24:
+        return "media"
+    else:
+        return "alta"
 
-    return ??
