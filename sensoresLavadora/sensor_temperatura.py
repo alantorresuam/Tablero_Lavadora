@@ -10,8 +10,10 @@ def init_temperatura(pin_num: int):
     return ds_sensor, roms
 
 def obtener_temperaturas(ds_sensor, roms):
-
-    return ??
+    ds_sensor.convert_temp()
+    time.sleep_ms(750)
+    temps = [ds_sensor.read_temp(rom) for rom in roms]
+    return temps
 
 
 def nivel_temperatura(temp):
