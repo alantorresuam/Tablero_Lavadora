@@ -5,7 +5,8 @@ def init_nivel_agua():
     return adc
 
 def leer_nivel_agua(adc):
-    return #
+    value_16bit = adc.read_u16()   
+    return value_16bit
 
 def interpretar_nivel_agua(value):
     return #
