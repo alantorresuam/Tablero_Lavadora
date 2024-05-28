@@ -163,3 +163,40 @@ Teclado matricial
 //#define PIN_CENTRIFUGAR 22			// Centrifugar
 //#define PIN_PAUSA_PLAY 23				// Pausa/Play
 >>>>>>> cbe73a759d0bb9c9704b2620b41caa57489ee00e
+
+
+
+¡Claro! Aquí tienes una versión actualizada con más subtareas:
+
+---
+
+# Lavadora con Conexión WiFi
+
+Este proyecto consiste en una lavadora que cuenta con conectividad WiFi, lo que permite a los usuarios monitorear y controlar remotamente los niveles y la temperatura a través de una aplicación móvil o plataforma en línea.
+
+## Características principales:
+- *Conexión WiFi:* La lavadora está equipada con un módulo WiFi que le permite conectarse a una red inalámbrica doméstica.
+- *Monitoreo Remoto:* Los usuarios pueden ver los niveles de agua y la temperatura en tiempo real a través de una aplicación móvil o plataforma en línea.
+- *Control Remoto:* Los usuarios tienen la capacidad de encender y apagar la lavadora de forma remota desde la aplicación.
+
+## Subtareas:
+1. *Configuración de la Conexión WiFi:*
+    - Configurar la lavadora para que se conecte a una red WiFi doméstica.
+    - Implementar el protocolo Blink para la configuración y autenticación de la conexión WiFi.
+
+2. *Desarrollo de la Aplicación:*
+    - Diseñar la interfaz de usuario de la aplicación móvil o plataforma en línea.
+    - Desarrollar la funcionalidad para acceder a los niveles y la temperatura de la lavadora a través de la API de Blink.
+    - Implementar la capacidad de encender y apagar la lavadora remotamente desde la aplicación.
+
+3. *Pruebas de Integración:*
+    - Verificar la estabilidad de la conexión WiFi y la comunicación entre la lavadora y la aplicación.
+    - Realizar pruebas de extremo a extremo para asegurar que la información proporcionada por la aplicación sea precisa y en tiempo real.
+    - Probar la funcionalidad de encendido y apagado remoto para garantizar su fiabilidad y seguridad.
+
+## Definición de Listo:
+La conexión WiFi está configurada y operativa. La lavadora se conecta sin problemas a la red WiFi y es accesible a través de la aplicación móvil o plataforma en línea. Los usuarios pueden ver los niveles y la temperatura de la lavadora. Además, pueden encender y apagar la lavadora remotamente sin problemas. Se ha verificado que todas estas funciones operen sin errores, ofreciendo una experiencia de usuario eficiente.
+
+---
+
+¡Espero que esto sea útil! Si necesitas más detalles o ajustes, no dudes en decírmelo.
