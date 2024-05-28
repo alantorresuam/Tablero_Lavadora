@@ -2,7 +2,7 @@ from sensor_temperatura import init_temperatura, obtener_temperaturas, nivel_tem
 from utime import sleep
     
 def main():
-    pin_num = 16  # Reemplaza '16' con el pin correcto
+    pin_num = 16  
     ds_sensor, roms = init_temperatura(pin_num)
 
     while True:
