@@ -144,3 +144,13 @@ void pesada(){
     printf("Carga pesada\n");
 }
 // FIN CARGA (liviana/media/pesada)
+
+
+/**
+ * @brief Turns off all the LEDs.
+ */
+void apagar_todos_los_leds() {
+    for (int i = 0; i < PINS_SIZE_LEDS; i++) {
+        gpio_put(leds[i], 0);
+    }
+}

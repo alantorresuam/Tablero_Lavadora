@@ -102,3 +102,9 @@ void media();
  */
 void pesada();
 // FIN CARGA (liviana/media/pesada)
+
+/**
+ * @brief Turns off the washing machine.
+ */
+void apagar_todos_los_leds();
+// FIN APAGA LEDS
