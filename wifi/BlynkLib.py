@@ -204,3 +204,66 @@ class BlynkProtocol(EventEmitter):
                     print("Unexpected command: ", cmd)
                     return self.disconnect()
  
+import socket
+ 
+# Clase Blynk que hereda de BlynkProtocol y gestiona la conexión con el servidor Blynk a través de un socket
+class Blynk(BlynkProtocol):
+    def __init__(self, auth, **kwargs):
+        self.insecure = kwargs.pop('insecure', False)  # Establece si la conexión es segura o no
+        self.server = kwargs.pop('server', 'blynk.cloud')  # Dirección del servidor Blynk
+        self.port = kwargs.pop('port', 80 if self.insecure else 443)  # Puerto del servidor Blynk
+        BlynkProtocol.__init__(self, auth, **kwargs)  # Inicializa la conexión con el servidor Blynk
+        self.on('redirect', self.redirect)  # Maneja los eventos de redirección
+ 
+    # Método para manejar la redirección del servidor Blynk
+    def redirect(self, server, port):
+        self.server = server
+        self.port = port
+        self.disconnect()
+        self.connect()
+ 
+    # Método para establecer la conexión con el servidor Blynk
+    def connect(self):
+        print('Connecting to %s:%d...' % (self.server, self.port))
+        s = socket.socket()  # Crea un nuevo socket
+        s.connect(socket.getaddrinfo(self.server, self.port)[0][-1])  # Conecta el socket al servidor
+        try:
+            s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)  # Configura el socket para enviar datos inmediatamente
+        except:
+            pass
+        if self.insecure:
+            self.conn = s  # Si la conexión no es segura, asigna el socket directamente
+        else:
+            try:
+                import ussl
+                ssl_context = ussl  # Importa el módulo ussl para establecer una conexión segura
+            except ImportError:
+                import ssl
+                ssl_context = ssl.create_default_context()  # Crea un contexto SSL predeterminado
+            self.conn = ssl_context.wrap_socket(s, server_hostname=self.server)  # Establece una conexión segura con el servidor Blynk
+        try:
+            self.conn.settimeout(SOCK_TIMEOUT)  # Configura el tiempo de espera del socket
+        except:
+            s.settimeout(SOCK_TIMEOUT)
+        BlynkProtocol.connect(self)  # Inicia la conexión con el servidor Blynk
+ 
+    # Método para escribir datos en el socket
+    def _write(self, data):
+        self.conn.write(data)  # Escribe datos en el socket
+        # TODO: manejar desconexión
+ 
+    # Método para ejecutar el bucle principal de la conexión con el servidor Blynk
+    def run(self):
+        data = b''
+        try:
+            data = self.conn.read(self.buffin)  # Lee datos del socket
+        except KeyboardInterrupt:
+            raise
+        except socket.timeout:
+            # No se recibieron datos, llama al método process para enviar mensajes de ping cuando sea necesario
+            pass
+        except: # TODO: manejar desconexión
+            return
+        self.process(data)  # Procesa los datos recibidos del servidor Blynk
+
+
