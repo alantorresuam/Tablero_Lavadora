@@ -2,6 +2,7 @@
 add_executable(Lavadora main.c
         temporizador.c
         Teclado.c
+        Leds.c
 )
 
 # Vincula las bibliotecas necesarias
