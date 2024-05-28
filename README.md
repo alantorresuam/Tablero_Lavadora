@@ -16,8 +16,13 @@ Pines GPIO para conexiones
 - I2C
 - SDA: GPIO 16
 - SCL: GPIO 17
+
+![alt text](image.png)
+
 - Máquina de Estados Finita (FSM)
 - La FSM gestiona los diferentes estados y transiciones del ciclo de lavado. Los estados incluyen encendido, selección de opciones, lavado, enjuague, centrifugado, pausa y apagado.
+
+
 
 ## Eventos
 Los eventos que desencadenan transiciones en la FSM son:
