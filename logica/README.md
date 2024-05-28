@@ -164,10 +164,6 @@ Teclado matricial
 //#define PIN_PAUSA_PLAY 23				// Pausa/Play
 >>>>>>> cbe73a759d0bb9c9704b2620b41caa57489ee00e
 
-
-
-¡Claro! Aquí tienes una versión actualizada con más subtareas:
-
 ---
 
 # Lavadora con Conexión WiFi
