@@ -287,4 +287,5 @@ Este código es un script de prueba para verificar los diferentes sonidos genera
 ---
 ## Maquetado
 En el maquetado se puede observar el uso del GPIO 16 para controlar el zumbador pasivo.
+
 ![MAQUETADO_ZUMBADOR](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/525351e1-a281-4b13-b2eb-882cc2c793c6)
