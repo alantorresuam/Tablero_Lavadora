@@ -19,17 +19,50 @@ state = 0
 
 if __name__ == '__main__':
     while(True):
-
+        print(state)
+        comando = 'd'
+        if uart.any():
+            comando = uart.read(1).decode()
         if state == 0:
-            pass
+             if comando == 'K':
+                while uart.any() == 0:
+                    continue
+                opcion_teclado = uart.read(1).decode()
+                if(opcion_teclado == 'D'): # encender
+                    print(opcion_teclado)
         elif state == 1:
-            pass
+            if comando == 'K':
+                while uart.any() == 0:
+                    continue
+                opcion_teclado = uart.read(1).decode()
+                if(opcion_teclado == 'D'): # encender
+                    print(opcion_teclado)
         elif state == 2:
-            pass
+            if comando == 'K':
+                while uart.any() == 0:
+                    continue
+                opcion_teclado = uart.read(1).decode()
+                if(opcion_teclado == 'D'): # encender
+                    print(opcion_teclado)
         elif state == 3:
-            pass
+            if comando == 'K':
+                while uart.any() == 0:
+                    continue
+                opcion_teclado = uart.read(1).decode()
+                if(opcion_teclado == 'D'): # encender
+                    print(opcion_teclado)
         elif state == 4:
-            pass
+            if comando == 'K':
+                while uart.any() == 0:
+                    continue
+                opcion_teclado = uart.read(1).decode()
+                if(opcion_teclado == 'D'): # encender
+                    print(opcion_teclado)
                     
         elif state == 5:
-            pass
+            if comando == 'K':
+                while uart.any() == 0:
+                    continue
+                opcion_teclado = uart.read(1).decode()
+                if(opcion_teclado == 'D'): # encender
+                    print(opcion_teclado)
