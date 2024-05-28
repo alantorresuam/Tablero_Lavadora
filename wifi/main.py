@@ -2,8 +2,8 @@ import time
 import network  
 import BlynkLib  
 
-temps = 4.0
-value_10bit = 10.0
+temps = 50.0
+value_10bit = 100.0
 
 class WasherPeripheral:
     def __init__(self):
@@ -18,7 +18,6 @@ class WasherPeripheral:
         # Conecta al servicio Blynk
         self.blynk = BlynkLib.Blynk(self.BLYNK_AUTH)
         
-        self.button_state = 0  # Variable para almacenar el estado del botón virtual
         self.temperature = temps
         self.value_10bit = value_10bit
 
@@ -33,6 +32,9 @@ class WasherPeripheral:
 
     def update_value_10bit(self):
         self.blynk.virtual_write(3, self.value_10bit)
+
+    def send_value_to_blynk(self, pin, value):
+        self.blynk.virtual_write(pin, value)
 
     def connect_wifi(self):
         # Espera a que se establezca la conexión de red
@@ -54,11 +56,6 @@ class WasherPeripheral:
 
     def run(self):
         self.connect_wifi()
-
-        # Registra el manejador de pin virtual
-        @self.blynk.on("V1")  
-        def v1_write_handler(value):  
-            self.button_state = int(value[0])  # Almacena el valor recibido del botón virtual
 
         # Bucle principal para ejecutar la comunicación con Blynk
         while True:
