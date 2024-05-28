@@ -68,4 +68,3 @@ class WasherPeripheral:
 
 washer_peripheral = WasherPeripheral()
 washer_peripheral.run()
-
