@@ -81,3 +81,86 @@ void actualizar(int decenas, int unidades): Esta función actualiza la visualiza
 ## Maquetado
 ![alt text](Temporizador/image.png)
 Como se puede observar, tengo los GPIO 10-16 para controlar los segmentos individuales del display, mientras que tengo los GPIO 17 y 18 para controlar que display se utilizará.
+
+
+---
+## SPRINT 3
+
+## Sensor nivel de agua
+Como usuario de una lavadora, quiero poder visualizar el nivel de agua como alto, medio, bajo o seco para monitorear la cantidad de agua utilizada en cada ciclo.
+
+### Tareas
+- Buscar un sensor de nivel de agua adecuado que sea compatible con la Rasperry Pico.
+- Programar la lógica necesaria para recibir la información correcta del sensor.
+- Realizar pruebas exhaustivas para asegurar que el sensor y el programa funcionen correctamente.
+- Documentar la funcionalidad del programa para futuras referencias y mantenimiento.
+- Integrar el software y hardware en la lavadora.
+- Realizar ajustes según sea necesario basados en los resultados de las pruebas y la retroalimentación del usuario.
+
+
+### Definición de hecho:
+El sensor de niveles de agua está disponible como una característica en la interfaz de la lavadora, permitiendo al usuario visualizar el nivel de agua en el tambor como alto, medio, bajo o seco. Durante el ciclo de lavado, el sensor mide la cantidad de agua y muestra esta información categorizada en la pantalla de la lavadora. No afecta el funcionamiento del ciclo de lavado. Se verifica que el sensor de niveles de agua funcione correctamente, proporcionando lecturas precisas y visibles en todo momento, y que cumpla con los estándares de claridad y precisión esperados para los niveles alto, medio, bajo y seco.
+
+### Funcionalidad del sensor
+Esta funcionalidad permite la medición y visualización del nivel de agua en la lavadora. Utiliza un sensor de nivel de agua compatible con la Raspberry Pi Pico W, leyendo los valores analógicos y determinando el nivel de agua como alto, medio, bajo o seco.
+
+### Descripción
+init_nivel_agua(): Inicializa el sensor de nivel de agua conectándolo a un pin específico de la Raspberry Pi Pico W. Utiliza el módulo ADC (Conversor Analógico a Digital) para configurar el pin y poder leer valores analógicos del sensor.
+
+leer_nivel_agua(adc): Lee el valor analógico del sensor de nivel de agua. El valor leído es un número de 16 bits, que se convierte a un número de 10 bits para mayor simplicidad y compatibilidad con las lecturas estándar de sensores de agua.
+
+interpretar_nivel_agua(value): Interpreta el valor analógico leído del sensor y determina el nivel de agua. Utiliza umbrales predefinidos para categorizar el nivel de agua en "seco", "bajo", "medio" o "alto". Esta categorización permite que la lavadora muestre al usuario el nivel de agua actual de manera clara y comprensible.
+
+
+## Uso
+- Solo es necesario tener el archivo sensor_nivel_agua.py importado para poder utilizarlo.
+- Se necesita tener importado de utime, sleep.
+- Del archivo sensor_nivel_agua.py utilizaremos los siguientes métodos:
+ 1) init_nivel_agua()
+ 2) leer_nivel_agua(adc)
+ 3) interpretar_nivel_agua(value)
+
+## Maquetado
+![alt text](<Imagen de WhatsApp 2024-05-28 a las 09.07.30_1b63e2bc.jpg>)
+Como se puede observar, ocupo el GPIO26 debido al ADC0, y se conecta al voltaje y al gnd.
+
+
+
+
+## Sensor temperatura de agua
+Como usuario de una lavadora, quiero poder visualizar la temperatura del agua para monitorear la temperatura durante cada ciclo de lavado.
+
+### Tareas
+- Buscar un sensor de temperatura que sirva en el agua adecuado que sea compatible con la Rasperry Pico.
+- Programar la lógica necesaria para recibir la información correcta del sensor.
+- Realizar pruebas exhaustivas para asegurar que el sensor y el programa funcionen correctamente.
+- Documentar la funcionalidad del programa para futuras referencias y mantenimiento.
+- Integrar el software y hardware en la lavadora.
+- Realizar ajustes según sea necesario basados en los resultados de las pruebas y la retroalimentación del usuario.
+
+
+### Definición de hecho:
+El sensor de temperatura está disponible como una característica en la interfaz de la lavadora, permitiendo al usuario visualizar la temperatura del agua en el tambor. Durante el ciclo de lavado, el sensor mide la temperatura del agua y muestra esta información en la pantalla de la lavadora. No afecta el funcionamiento del ciclo de lavado. Se verifica que el sensor de temperatura funcione correctamente, proporcionando lecturas precisas y visibles en todo momento, y que cumpla con los estándares de claridad y precisión esperados.
+
+### Funcionalidad del sensor
+Este sensor permitirá obtener en grados celcius la temperatura del agua donde introduciremos el sensor.
+
+### Descripción
+ init_temperatura(pin_num): Se encarga de inicializar el sensor de temperatura del agua. Esto implica establecer la conexión entre el sensor y la Raspberry Pi Pico, asignando el pin GPIO adecuado para la lectura del sensor. Esta inicialización es esencial para garantizar que la comunicación entre la Raspberry Pi Pico y el sensor se realice de manera efectiva.
+
+ obtener_temperaturas(ds_sensor, roms): Sirve para obtener las lecturas de temperatura del agua en el tambor de la lavadora. El sensor de temperatura generalmente proporciona valores numéricos que representan la temperatura en grados Celsius. Estos valores son leídos por la Raspberry Pi Pico y procesados para su posterior visualización.
+
+nivel_temperatura(temp): Se encarga de clasificar la temperatura del agua en una de las siguientes categorías: baja, media o alta. Esta clasificación se realiza utilizando umbrales predefinidos. Por ejemplo, una temperatura por debajo de 18 grados Celsius podría considerarse baja, mientras que una temperatura entre 18 y 24 grados Celsius podría considerarse media, y cualquier temperatura por encima de 24 grados Celsius podría considerarse alta.
+
+
+## Uso
+- Se debe importar el archivo con las funciones necesarias para el uso del sensor de temperatura.
+- Se requiere importar los módulos machine, onewire, ds18x20, y time. Dentro del archivo del programa como tal.
+- Se utilizarán las siguientes funciones:
+1) init_temperatura(pin_num)
+2) obtener_temperaturas(ds_sensor, roms)
+3) nivel_temperatura(temp)
+
+## Maquetado
+![alt text](image-1.png)
+Como se puede ver el cable negro estará conectado al gnd, el rojo al voltaje y el amarillo a un GPIO asignado.

@@ -25,7 +25,7 @@ def interpretar_nivel_agua(value):
         value (int): El valor analógico leído del sensor (0-1023).
 
     Regresa:
-        str: 'bajo', 'medio' o 'alto' basado en el nivel de agua.
+        str: 'seco', 'bajo', 'medio',' o 'alto' basado en el nivel de agua.
     """
     if value < 300:
         return "seco"
