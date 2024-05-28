@@ -3,13 +3,13 @@ import onewire
 import ds18x20
 import time
 
-def init_temperatura(pin_num: int):
+def init_temperatura(pin_ds18x20: int):
     """Construye un objeto sensor de temperatura usando el DS18B20.
 
     Args:
         pin (int): El pin GPIO al que está conectado el pin DATA del DS18B20.
     """
-    pin = machine.Pin(pin_num)
+    pin = machine.Pin(pin_ds18x20)
     ds_sensor = ds18x20.DS18X20(onewire.OneWire(pin))
     roms = ds_sensor.scan()
     return ds_sensor, roms

@@ -2,8 +2,8 @@ from sensor_temperatura import init_temperatura, obtener_temperaturas, nivel_tem
 from utime import sleep
     
 def main():
-    pin_num = 16  
-    ds_sensor, roms = init_temperatura(pin_num)
+    pin_ds18x20 = 16  
+    ds_sensor, roms = init_temperatura(pin_ds18x20)
 
     while True:
         temperaturas = obtener_temperaturas(ds_sensor, roms)
