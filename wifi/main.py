@@ -32,7 +32,7 @@ class WasherPeripheral:
         self.blynk.virtual_write(2, self.temperature)
 
     def update_value_10bit(self):
-        self.blynk.virtual_write(3, self.)
+        self.blynk.virtual_write(3, self.value_10bit)
 
     def connect_wifi(self):
         # Espera a que se establezca la conexión de red
@@ -68,3 +68,4 @@ class WasherPeripheral:
 
 washer_peripheral = WasherPeripheral()
 washer_peripheral.run()
+
