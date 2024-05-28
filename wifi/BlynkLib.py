@@ -122,4 +122,85 @@ class BlynkProtocol(EventEmitter):
         self.state = CONNECTING
         self._send(MSG_HW_LOGIN, self.auth)
  
-  
+    # Método para desconectar del servidor Blynk
+    def disconnect(self):
+        if self.state == DISCONNECTED: return
+        self.bin = b""
+        self.state = DISCONNECTED
+        self.emit('disconnected')
+ 
+    # Método para procesar los datos recibidos del servidor Blynk
+    def process(self, data=None):
+        if not (self.state == CONNECTING or self.state == CONNECTED): return
+        now = gettime()
+        if now - self.lastRecv > self.heartbeat+(self.heartbeat//2):
+            return self.disconnect()
+        if (now - self.lastPing > self.heartbeat//10 and
+            (now - self.lastSend > self.heartbeat or
+             now - self.lastRecv > self.heartbeat)):
+            self._send(MSG_PING)
+            self.lastPing = now
+        
+        if data != None and len(data):
+            self.bin += data
+ 
+        while True:
+            if len(self.bin) < 5:
+                break
+ 
+            cmd, i, dlen = struct.unpack("!BHH", self.bin[:5])
+            if i == 0: return self.disconnect()
+                      
+            self.lastRecv = now
+            if cmd == MSG_RSP:
+                self.bin = self.bin[5:]
+ 
+                self.log('>', cmd, i, '|', dlen)
+                if self.state == CONNECTING and i == 1:
+                    if dlen == STA_SUCCESS:
+                        self.state = CONNECTED
+                        dt = now - self.lastSend
+                        info = ['ver', __version__, 'h-beat', self.heartbeat//                        1000, 'buff-in', self.buffin, 'dev', sys.platform+'-py']
+                        if self.tmpl_id:
+                            info.extend(['tmpl', self.tmpl_id])
+                            info.extend(['fw-type', self.tmpl_id])
+                        if self.fw_ver:
+                            info.extend(['fw', self.fw_ver])
+                        self._send(MSG_INTERNAL, *info)
+                        try:
+                            self.emit('connected', ping=dt)
+                        except TypeError:
+                            self.emit('connected')
+                    else:
+                        if dlen == STA_INVALID_TOKEN:
+                            self.emit("invalid_auth")
+                            print("Invalid auth token")
+                        return self.disconnect()
+            else:
+                if dlen >= self.buffin:
+                    print("Cmd too big: ", dlen)
+                    return self.disconnect()
+ 
+                if len(self.bin) < 5+dlen:
+                    break
+ 
+                data = self.bin[5:5+dlen]
+                self.bin = self.bin[5+dlen:]
+ 
+                args = list(map(lambda x: x.decode('utf8'), data.split(b'\0')))
+ 
+                self.log('>', cmd, i, '|', ','.join(args))
+                if cmd == MSG_PING:
+                    self._send(MSG_RSP, STA_SUCCESS, id=i)
+                elif cmd == MSG_HW or cmd == MSG_BRIDGE:
+                    if args[0] == 'vw':
+                        self.emit("V"+args[1], args[2:])
+                        self.emit("V*", args[1], args[2:])
+                elif cmd == MSG_INTERNAL:
+                    self.emit("internal:"+args[0], args[1:])
+                elif cmd == MSG_REDIRECT:
+                    self.emit("redirect", args[0], int(args[1]))
+                else:
+                    print("Unexpected command: ", cmd)
+                    return self.disconnect()
+ 
