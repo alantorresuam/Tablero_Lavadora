@@ -169,8 +169,10 @@ En el archivo pin_list_leds.h se tienen las definiciones de pines (define), dond
 
 ---
 ## Maquetado
-![MAQUETADO_LEDS](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/f5302a09-9c89-47b2-8fe5-e093e5f6c250)
 En el maquetado se puede observar el uso de los GPIO 19-20-21-22-26 para controlar las funcionalidades encendido/apagado, pausa/play, lavar, enjugar y centrifugar con los leds correspondientes.
+
+![MAQUETADO_LEDS](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/f5302a09-9c89-47b2-8fe5-e093e5f6c250)
+
 ---
 ## SPRINT 3
 
@@ -198,40 +200,39 @@ Esta funcionalidad forma parte de un sistema de control para indicar diferentes 
 Este código está diseñado para controlar un buzzer pasivo conectado a un microcontrolador Raspberry Pi Pico, utilizando MicroPython. El buzzer pasivo puede generar diferentes tonos y ritmos.
 
 ### Importaciones
-#from machine import Pin, PWM
-#import time
+    from machine import Pin, PWM
+    import time
 - "Pin" y "PWM" se importan del módulo "machine", que es específico para manejar hardware en MicroPython.
 - "time" se importa para manejar retardos temporales.
 
-
 ### Configuración del buzzer
-#buzzer_pin = Pin(16, Pin.OUT)
-#buzzer = PWM(buzzer_pin)
+    buzzer_pin = Pin(16, Pin.OUT)
+    buzzer = PWM(buzzer_pin)
 - Se define el pin 16 como una salida (Pin.OUT) para el buzzer.
 - Se crea un objeto PWM (Pulse Width Modulation) asociado al pin del buzzer, lo que permite controlar la frecuencia y el ciclo de trabajo del buzzer.
 
 ### Definición de notas musicales
-#CL = [0, 131, 147, 165, 175, 196, 211, 248]
-#CM = [0, 262, 294, 330, 350, 393, 441, 495]
-#CH = [0, 525, 589, 661, 700, 786, 882, 990]
+    CL = [0, 131, 147, 165, 175, 196, 211, 248]
+    CM = [0, 262, 294, 330, 350, 393, 441, 495]
+    CH = [0, 525, 589, 661, 700, 786, 882, 990]
 - CL, CM y CH son listas que contienen las frecuencias de las notas musicales en las octavas baja, media y alta, respectivamente.
 
 ### Definición de una canción
-#song_1 = [CM[3], CM[5], CM[6], ...]
-#beat_1 = [1, 1, 3, ...]
+    song_1 = [CM[3], CM[5], CM[6], ...]
+    beat_1 = [1, 1, 3, ...]
 - song_1 es una lista de frecuencias que representan las notas de una canción.
 - beat_1 es una lista de duraciones correspondientes a cada nota de song_1. Los valores de duración están en unidades de tiempo relativas (cada unidad podría ser 0.5 segundos).
 
 ### Función para generar un beep
-#def beep(frequency, duration):
-#    if frequency == 0:
-#        time.sleep(duration)
-#    else:
-#        buzzer.freq(frequency)
-#        buzzer.duty_u16(32768)
-#        time.sleep(duration)
-#        buzzer.duty_u16(0)
-#        time.sleep(0.05)
+    def beep(frequency, duration):
+        if frequency == 0:
+            time.sleep(duration)
+        else:
+            buzzer.freq(frequency)
+            buzzer.duty_u16(32768)
+            time.sleep(duration)
+            buzzer.duty_u16(0)
+            time.sleep(0.05)
 - beep(frequency, duration) genera un tono en el buzzer a la frecuencia especificada durante la duración dada.
 - Si la frecuencia es 0, se introduce un silencio (time.sleep(duration)).
 - buzzer.freq(frequency) establece la frecuencia del PWM.
@@ -239,19 +240,19 @@ Este código está diseñado para controlar un buzzer pasivo conectado a un micr
 - Después de la duración especificada, el ciclo de trabajo se pone a 0 para apagar el buzzer y se añade un pequeño retardo de 0.05 segundos.
 
 ### Funciones para tonos específicos
-#def sonar_encendido():
-#    for _ in range(3):
-#        beep(262, 0.1)
-#        time.sleep(0.1)
+    def sonar_encendido():
+        for _ in range(3):
+            beep(262, 0.1)
+            time.sleep(0.1)
 - Estas funciones reproducen tonos específicos para eventos como encendido, apagado, final y pulsación de botón, utilizando patrones de beep.
 
 ### Reproducción de una canción:
-#def sonar_cancion(song, beat):
-#    for note, duration in zip(song, beat):
-#        beep(note, duration * 0.5)
+    def sonar_cancion(song, beat):
+        for note, duration in zip(song, beat):
+            beep(note, duration * 0.5)
 
-#def sonar_cancion_1():
-#    sonar_cancion(song_1, beat_1)
+    def sonar_cancion_1():
+        sonar_cancion(song_1, beat_1)
 - sonar_cancion(song, beat) reproduce una secuencia de notas (song) con sus respectivas duraciones (beat). Cada duración se multiplica por 0.5 segundos.
 - sonar_cancion_1() llama a sonar_cancion con song_1 y beat_1 para reproducir la canción definida.
 
@@ -265,26 +266,25 @@ Este código está diseñado para controlar un buzzer pasivo conectado a un micr
 Este código es un script de prueba para verificar los diferentes sonidos generados por el buzzer. Utiliza las funciones importadas del módulo sonidos_zumbador para reproducir diversos tonos y melodías. 
 
 ### Importaciones
-#from sonidos_zumbador import sonar_encendido, sonar_apagado, sonar_final, sonar_botón, sonar_cancion_1, sonar_cancion_2, sonar_cancion_3
-#import time
+    from sonidos_zumbador import sonar_encendido, sonar_apagado, sonar_final, sonar_botón, sonar_cancion_1, sonar_cancion_2, sonar_cancion_3
+    import time
 - from sonidos_zumbador import ...: Importa funciones específicas desde un archivo o módulo llamado sonidos_zumbador.
 - "time" se importa para manejar retardos temporales.
 
 
 ### Función Principal
-#if __name__ == "__main__":
-#   print("Testing buzzer sounds...")
+    if __name__ == "__main__":
+        print("Probando sonidos del zumbador...")
 - Se asegura que el código dentro de él se ejecute solo si el script se ejecuta directamente y no si se importa como un módulo en otro script.
 
 ### Pruebas de Sonidos
-#print("Sound for power on...")
-#sonar_encendido()
-#time.sleep(1)
+    print("Sonido para encendido...")
+    sonar_encendido()
+    time.sleep(1)
 - Imprime un mensaje indicando que va a sonar el tono dado un estado.
 - Llama a la función correspondiente para reproducir el sonido.
 - Pausa la ejecución por 1 segundo para dar tiempo a que se complete el sonido.
 ---
 ## Maquetado
-![MAQUETADO_LEDS](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/f5302a09-9c89-47b2-8fe5-e093e5f6c250)
 En el maquetado se puede observar el uso del GPIO 16 para controlar el zumbador pasivo.
-
+![MAQUETADO_ZUMBADOR](https://github.com/alantorresuam/Tablero_Lavadora/assets/125215483/525351e1-a281-4b13-b2eb-882cc2c793c6)
