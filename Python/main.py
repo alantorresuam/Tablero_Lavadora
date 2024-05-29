@@ -6,6 +6,7 @@ from machine import UART
 from machine import I2C, Pin
 from ssd1306 import SSD1306_I2C
 from shared_obj import ev, fsm
+from shared_obj import washerPeripheral
 
 # Configuración de pines UART
 uart = machine.UART(0, baudrate=9600, tx=machine.Pin(12), rx=machine.Pin(13))

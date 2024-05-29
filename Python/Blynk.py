@@ -3,7 +3,7 @@ import network
 import BlynkLib  
 
 temps = 50.0
-value_10bit = 60.0
+value_10bit = 70.0
 
 class WasherPeripheral:
     def __init__(self):
