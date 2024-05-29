@@ -14,7 +14,7 @@ def init_temperatura(pin_ds18x20: int):
     roms = ds_sensor.scan()
     return ds_sensor, roms
 
-def obtener_temperaturas(ds_sensor):
+def obtener_temperaturas(ds_sensor, roms):
     """Regresa las temperatura actual del sensor conectado.
 
     Args:
@@ -26,7 +26,7 @@ def obtener_temperaturas(ds_sensor):
     """
     ds_sensor.convert_temp()
     time.sleep_ms(750)
-    temp = [ds_sensor.read_temp()]
+    temp = [ds_sensor.read_temp(rom) for rom in roms]
     return temp
 
 
