@@ -12,7 +12,10 @@
 #define UART_TX_PIN 12
 #define UART_RX_PIN 13
 
-char state = '\0';
+bool temporizador = false;
+int time = 0;
+int segundo = 0;
+
 int main(){
 
     // Inicializa UART
@@ -27,6 +30,12 @@ int main(){
     keypad_construct(pinsTeclado);
     keypad_init();
 
+    // Inicializa temporizador
+    int pinsTime[] = {PIN_A, PIN_B, PIN_C, PIN_D, PIN_E, PIN_F, PIN_G, PIN_DIGITO1, PIN_DIGITO2};
+    time_construct(pinsTime);
+    time_init();
+    apagar();
+
 
     while (true){
         char opcion = read_keypad();
@@ -34,13 +43,48 @@ int main(){
             uart_putc_raw(UART_ID, 'K'); // notificacion de entrada del teclado
             uart_putc_raw(UART_ID, opcion); // enviar entrada para cambio de estado
         }
-
-        uart_putc_raw(UART_ID, 'S'); // Solicita el nuevo estado de la FSM
-        while (!uart_is_readable(UART_ID)) // esperando respuesta 
-        {
-
+        
+        if (uart_is_readable(UART_ID)) {
+            char command = uart_getc(UART_ID);
+            if (command == 'I') {
+                time = 8;
+                temporizador = true;
+            }
+            if (command == 'P')
+            {
+                temporizador = false;
+            }
+            if (command == 'p')
+            {
+                temporizador = true;
+            }
+            if(command == 'O'){
+                temporizador = false;
+                time = 0;
+            }
         }
-        char char_state = uart_getc(UART_ID); // obtener el nuevo estado
-        state = atoi(&char_state);
+
+        if(temporizador){
+            printf("%d\n", time);
+            if(time > 0){
+                int decena = time / 10;
+                int unidad = time % 10;
+                actualizar(decena, unidad);
+                segundo += 20;
+                if (segundo == 1000){
+                    time = decrementar();
+                    segundo = 0;
+                }
+            }else if (time == 0){
+                uart_putc_raw(UART_ID, 'T'); 
+                apagar();
+                temporizador = false;
+            }
+            
+        }
+
+        
     }
+
+    
 }
