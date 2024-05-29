@@ -1,12 +1,12 @@
 import fsm_actions
-import shared_obj
 from time import sleep
 import machine
 from machine import UART
 from machine import I2C, Pin
 from ssd1306 import SSD1306_I2C
 from shared_obj import ev, fsm
-from shared_obj import washerPeripheral
+from shared_obj import washer_peripheral
+from sensor_temperatura import init_temperatura, obtener_temperaturas, nivel_temperatura
 
 # Configuración de pines UART
 uart = machine.UART(0, baudrate=9600, tx=machine.Pin(12), rx=machine.Pin(13))
@@ -15,6 +15,9 @@ i2c = I2C(0, sda=Pin(16), scl=Pin(17), freq=400000)
 oled = SSD1306_I2C(128,64,i2c)
 oled.fill(0)
 oled.show()
+
+pin_ds18x20 = 18
+ds_sensor, roms = init_temperatura(pin_ds18x20)
 
 state = 0
 
@@ -33,13 +36,20 @@ estado_anterior = 0
 Iniciar_temporizador = False
 
 
+washer_peripheral.update_temperature(10.00)
+
+
 if __name__ == '__main__':
     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
     print(f"Estado: {state}")
     
     while(True):
+        # Temperaturas = obtener_temperaturas(ds_sensor, roms)
+        # for temp in Temperaturas:
+        #     washer_peripheral.update_temperature(temp)
+            
         if(encendido):
-            uart.write(b'N') # encender led enjuagar
+            uart.write(b'N') # encender led encendido
                         
         comando = 'd'
         if uart.any():
@@ -53,7 +63,7 @@ if __name__ == '__main__':
                     continue
                 opcion_teclado = uart.read(1).decode()
                 if(opcion_teclado == 'D'): # encender
-                    fsm.compute_next_state(shared_obj.ev['encender'])  
+                    fsm.compute_next_state(ev['encender'])  
                     state = fsm.get_current_state()
                     print(f"Estado: {state}")
                     inicio = 0;     
@@ -116,18 +126,18 @@ if __name__ == '__main__':
                     
                 if opcion_teclado == '*':
                     if lavar:
-                        fsm.compute_next_state(shared_obj.ev['lavar'])  # play lavar
+                        fsm.compute_next_state(ev['lavar'])  # play lavar
                         state = fsm.get_current_state()
                         print(f"Estado: {state}")
                         
                         Iniciar_temporizador = True
                     elif enjuagar:
-                        fsm.compute_next_state(shared_obj.ev['enjuagar'])  # play enjuagar
+                        fsm.compute_next_state(ev['enjuagar'])  # play enjuagar
                         state = fsm.get_current_state()
                         print(f"Estado: {state}")
                         Iniciar_temporizador = True
                     elif centrifugar:
-                        fsm.compute_next_state(shared_obj.ev['centrifugar'])  # play centrifugar
+                        fsm.compute_next_state(ev['centrifugar'])  # play centrifugar
                         state = fsm.get_current_state()
                         print(f"Estado: {state}")
                         Iniciar_temporizador = True

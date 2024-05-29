@@ -2,7 +2,7 @@ import time
 import network  
 import BlynkLib  
 
-temps = 50.0
+temps = 100.0
 value_10bit = 70.0
 
 class WasherPeripheral:

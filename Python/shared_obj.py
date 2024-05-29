@@ -20,4 +20,4 @@ ev = {
 
 fsm: FSM = FSM()
 
-washerPeripheral: WasherPeripheral = WasherPeripheral()
+washer_peripheral = WasherPeripheral()
