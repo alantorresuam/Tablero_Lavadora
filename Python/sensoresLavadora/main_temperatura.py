@@ -3,10 +3,10 @@ from utime import sleep
     
 def main():
     pin_ds18x20 = 18 
-    ds_sensor, roms = init_temperatura(pin_ds18x20)
+    ds_sensor = init_temperatura(pin_ds18x20)
 
     while True:
-        temperatura = obtener_temperaturas(ds_sensor, roms)
+        temperatura = obtener_temperaturas(ds_sensor)
         temp_celsius = f"{temperatura:.2f}°C"
         nivel = nivel_temperatura(temperatura)
         print(f"Temperatura: {temp_celsius}, Nivel: {nivel}")
