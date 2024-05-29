@@ -7,6 +7,9 @@ from ssd1306 import SSD1306_I2C
 from shared_obj import ev, fsm
 from shared_obj import washer_peripheral
 from sensor_temperatura import init_temperatura, obtener_temperaturas, nivel_temperatura
+from sonidos_zumbador import sonar_encendido, sonar_apagado, sonar_final, sonar_botón, sonar_cancion_1, sonar_cancion_2, sonar_cancion_3
+from sensor_nivel_agua import init_nivel_agua, leer_nivel_agua, interpretar_nivel_agua
+from time import sleep_ms
 
 # Configuración de pines UART
 uart = machine.UART(0, baudrate=9600, tx=machine.Pin(12), rx=machine.Pin(13))
@@ -18,6 +21,7 @@ oled.show()
 
 pin_ds18x20 = 18
 ds_sensor, roms = init_temperatura(pin_ds18x20)
+adc = init_nivel_agua()
 
 state = 0
 
@@ -47,6 +51,8 @@ if __name__ == '__main__':
         # Temperaturas = obtener_temperaturas(ds_sensor, roms)
         # for temp in Temperaturas:
         #     washer_peripheral.update_temperature(temp)
+        valor = leer_nivel_agua(adc)
+        washer_peripheral.update_value_10bit(valor)
             
         if(encendido):
             uart.write(b'N') # encender led encendido
@@ -59,6 +65,8 @@ if __name__ == '__main__':
             oled.fill(0)
             oled.show()
             if comando == 'K':
+                sonar_botón()
+                sleep_ms(50)
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -67,6 +75,7 @@ if __name__ == '__main__':
                     state = fsm.get_current_state()
                     print(f"Estado: {state}")
                     inicio = 0;     
+                    sonar_encendido()
                     while inicio < 3:
                         oled.text("bienvenido", 30, 20)
                         oled.show()
@@ -88,6 +97,7 @@ if __name__ == '__main__':
                 oled.text(f"Centrifugar", 20, 40)
             oled.show()                            
             if comando == 'K':
+                sonar_botón()
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -157,6 +167,7 @@ if __name__ == '__main__':
                     oled.text("Apagando....", 10, 8)
                     oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sonar_apagado()
                     sleep(3)
                     
         elif state == 2:
@@ -183,6 +194,7 @@ if __name__ == '__main__':
                     oled.fill(0)
                     oled.text("Proceso terminado", 0, 8)
                     oled.show()
+                    sonar_final()
                     sleep(3)
                 elif enjuagar:
                     fsm.compute_next_state(ev['lavar y enjuagar'])
@@ -197,6 +209,7 @@ if __name__ == '__main__':
 
                     
             if comando == 'K':
+                sonar_botón()
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -219,6 +232,7 @@ if __name__ == '__main__':
                     oled.text("Apagando....", 10, 8)
                     oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sonar_apagado()
                     sleep(3)
                     
                 
@@ -246,6 +260,7 @@ if __name__ == '__main__':
                     oled.text(f"Proceso ", 20, 8)
                     oled.text(f"terminado", 20, 20)
                     oled.show()   
+                    sonar_final()
                     sleep(3)               
                 else:
                     fsm.compute_next_state(ev['centrifugar'])
@@ -254,6 +269,7 @@ if __name__ == '__main__':
                     Iniciar_temporizador = True
                     
             if comando == 'K':
+                sonar_botón()
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -276,6 +292,7 @@ if __name__ == '__main__':
                     oled.text("Apagando....", 10, 8)
                     oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sonar_apagado()
                     sleep(3)
                     
         elif state == 4:
@@ -299,10 +316,11 @@ if __name__ == '__main__':
                 oled.fill(0)
                 oled.text(f"Proceso ", 20, 8)
                 oled.text(f"terminado", 20, 20)
-                
                 oled.show() 
+                sonar_final()
                 sleep(3)                               
             if comando == 'K':
+                sonar_botón()
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -325,6 +343,7 @@ if __name__ == '__main__':
                     oled.text("Apagando....", 10, 8)
                     oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sonar_apagado()
                     sleep(3)
                     
         elif state == 5:
@@ -334,6 +353,7 @@ if __name__ == '__main__':
             oled.text(f"Proceso: {procesos[estado_anterior - 2]}", 0, 20)
             oled.show()
             if comando == 'K':
+                sonar_botón()
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -362,6 +382,7 @@ if __name__ == '__main__':
                     oled.text("Apagando....", 10, 8)
                     oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sonar_apagado()
                     sleep(3)
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False

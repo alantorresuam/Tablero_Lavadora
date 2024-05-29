@@ -2,7 +2,7 @@ from machine import Pin, PWM
 import time
 
 # Definir el pin del buzzer
-buzzer_pin = Pin(16, Pin.OUT)
+buzzer_pin = Pin(11, Pin.OUT)
 buzzer = PWM(buzzer_pin)
 
 # Definir las notas y duraciones
