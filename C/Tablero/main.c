@@ -48,6 +48,7 @@ int main(){
         if(opcion != '\0'){
             uart_putc_raw(UART_ID, 'K'); // notificacion de entrada del teclado
             uart_putc_raw(UART_ID, opcion); // enviar entrada para cambio de estado
+            opcion = '\0';
         }
 
         if (uart_is_readable(UART_ID)) {

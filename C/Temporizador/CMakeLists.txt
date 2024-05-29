@@ -1,5 +1,4 @@
 add_executable(Temporizador
-        test.c
         temporizador.c
         )
 

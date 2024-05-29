@@ -10,8 +10,8 @@ class WasherPeripheral:
         # Configura la conexión Wi-Fi
         self.wlan = network.WLAN(network.STA_IF)
         self.wlan.active(True)  
-        self.wlan.connect("INFINITUM08AE", "eupZ4hazwv")  
-        # self.wlan.connect("#WUAMC", "wificua6")  
+        # self.wlan.connect("INFINITUM08AE", "eupZ4hazwv")  
+        self.wlan.connect("#WUAMC", "wificua6")  
 
         # Configuración de la autenticación Blynk
         self.BLYNK_AUTH = 'QTjQHRc6BuQmsjB9cYAOjG3WXH5Y2URa'

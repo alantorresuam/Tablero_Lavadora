@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Tablero_Lavadora")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/logica")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,8 +40,10 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("C:/Users/DELL/Desktop/repo/Tablero_Lavadora/C/build/pico-sdk/cmake_install.cmake")
-  include("C:/Users/DELL/Desktop/repo/Tablero_Lavadora/C/build/Teclado/cmake_install.cmake")
+  include("C:/Users/DELL/Desktop/repo/Tablero_Lavadora/C/build/logica/cmake_install.cmake")
   include("C:/Users/DELL/Desktop/repo/Tablero_Lavadora/C/build/Tablero/cmake_install.cmake")
+  include("C:/Users/DELL/Desktop/repo/Tablero_Lavadora/C/build/Teclado/cmake_install.cmake")
+  include("C:/Users/DELL/Desktop/repo/Tablero_Lavadora/C/build/Temporizador/cmake_install.cmake")
 
 endif()
 

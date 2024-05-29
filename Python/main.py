@@ -66,7 +66,8 @@ if __name__ == '__main__':
             oled.show()
             if comando == 'K':
                 sonar_botón()
-                sleep_ms(50)
+                print("hola sebas")
+                sleep(1)
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
@@ -98,6 +99,7 @@ if __name__ == '__main__':
             oled.show()                            
             if comando == 'K':
                 sonar_botón()
+                print(f"hola")
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
