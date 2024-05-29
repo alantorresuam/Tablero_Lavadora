@@ -15,19 +15,19 @@ def init_temperatura(pin_ds18x20: int):
     return ds_sensor, roms
 
 def obtener_temperaturas(ds_sensor, roms):
-    """Regresa las temperatura actual del sensor conectado.
+    """Regresa las temperaturas actuales de todos los sensores conectados.
 
     Args:
         ds_sensor: El objeto del sensor DS18B20.
         roms: Lista de ROMs de los sensores conectados.
 
     Regresa:
-        Un flotante
+        list[float]: Lista de temperaturas en grados Celsius.
     """
     ds_sensor.convert_temp()
     time.sleep_ms(750)
-    temp = [ds_sensor.read_temp(rom) for rom in roms]
-    return temp
+    temps = [ds_sensor.read_temp(rom) for rom in roms]
+    return temps
 
 
 def nivel_temperatura(temp):
