@@ -1,5 +1,7 @@
 #include "Teclado.h"
 #include "temporizador.h"
+#include "Leds.h"
+#include "pin_list_leds.h"
 #include "pin_list_keypad.h"
 #include "pin_list_display.h"
 #include <stdio.h>
@@ -33,9 +35,13 @@ int main(){
     // Inicializa temporizador
     int pinsTime[] = {PIN_A, PIN_B, PIN_C, PIN_D, PIN_E, PIN_F, PIN_G, PIN_DIGITO1, PIN_DIGITO2};
     time_construct(pinsTime);
+
+    int pinsled[] = { PIN_ENCENDIDO_APAGADO, PIN_PAUSA_PLAY, PIN_LAVAR, PIN_ENJUAGAR, PIN_CENTRIFUGAR};
+    construct_leds(pinsled);
+
     time_init();
     apagarTemporizador();
-
+    leds_init();
 
     while (true){
         char opcion = read_keypad();
@@ -46,21 +52,46 @@ int main(){
 
         if (uart_is_readable(UART_ID)) {
             char command = uart_getc(UART_ID);
-            if (command == 'I') {
+            if (command == 'I') // iniciar contador
+            { 
                 time = 8;
                 temporizador = true;
             }
-            if (command == 'P')
+            if (command == 'P') // pause
             {
                 temporizador = false;
+                pausa();
             }
-            if (command == 'p')
+            if (command == 'p') // play
             {
                 temporizador = true;
+                play();
             }
-            if(command == 'O'){
+            if(command == 'O') // apagar
+            {
+                apagar_todos_los_leds();
                 temporizador = false;
                 time = 0;
+            }
+            if(command == 'H') // apagar procesos
+            {
+                apagar_procesos();
+            }
+            if(command == 'N') // encender
+            {
+                encender();
+            }
+            if(command == 'L') // lavar
+            {
+                lavar();
+            }
+            if(command == 'E') // enjuagar
+            {
+                enjuagar();
+            }
+            if(command == 'C') // centrifugar
+            {
+                centrifugado();
             }
         }
 

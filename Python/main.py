@@ -26,6 +26,8 @@ lavar = False
 enjuagar = False
 centrifugar = False
 
+encendido = False
+
 estado_anterior = 0
 Iniciar_temporizador = False
 
@@ -33,11 +35,18 @@ Iniciar_temporizador = False
 if __name__ == '__main__':
     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
     print(f"Estado: {state}")
+    
     while(True):
+        if(encendido):
+            uart.write(b'N') # encender led enjuagar
+                        
         comando = 'd'
         if uart.any():
             comando = uart.read(1).decode()
         if state == 0:
+            encendido = False
+            oled.fill(0)
+            oled.show()
             if comando == 'K':
                 while uart.any() == 0:
                     continue
@@ -55,9 +64,11 @@ if __name__ == '__main__':
                     oled.fill(0)
                     oled.show()
         elif state == 1:
+            encendido = True
+            uart.write(b'P')
             oled.fill(0)
             oled.text(f"Selecciona", 20, 0)
-            oled.text(f"una opcion", 20, 8)
+            oled.text(f"las opciones", 20, 8)
             if(lavar):
                 oled.text(f"Lavar", 20, 20)
             if(enjuagar):
@@ -70,11 +81,14 @@ if __name__ == '__main__':
                     continue
                 opcion_teclado = uart.read(1).decode()
                 if(opcion_teclado == '7'): # lavar
+                    uart.write(b'L') # encender led lavar
                     lavar = True
                 if(opcion_teclado == '8'): # enjuagar
                     enjuagar = True
+                    uart.write(b'E') # encender led enjuagar
                 if(opcion_teclado == '9'): # centrifugar
                     centrifugar = True
+                    uart.write(b'C') # encender led centrifugar
                     
                 if lavar or enjuagar:
                     
@@ -104,6 +118,7 @@ if __name__ == '__main__':
                         fsm.compute_next_state(shared_obj.ev['lavar'])  # play lavar
                         state = fsm.get_current_state()
                         print(f"Estado: {state}")
+                        
                         Iniciar_temporizador = True
                     elif enjuagar:
                         fsm.compute_next_state(shared_obj.ev['enjuagar'])  # play enjuagar
@@ -125,13 +140,18 @@ if __name__ == '__main__':
                     lavar = False
                     enjuagar = False
                     centrifugar = False
+                    encendido = False
                     uart.write("O")
                     oled.fill(0)
+                    oled.text("Apagando....", 10, 8)
+                    oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sleep(3)
                     
         elif state == 2:
             if(Iniciar_temporizador):
                 uart.write(b'I') # Iniciar temporizador
+                uart.write(b'p') # play
                 Iniciar_temporizador = False
             oled.fill(0)
             oled.text(f"Lavando...", 20, 8)
@@ -148,6 +168,7 @@ if __name__ == '__main__':
                     lavar = False
                     enjuagar = False
                     centrifugar = False
+                    uart.write(b'H') # apagar leds de procesos
                     oled.fill(0)
                     oled.text("Proceso terminado", 0, 8)
                     oled.show()
@@ -182,13 +203,18 @@ if __name__ == '__main__':
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    encendido = False
                     oled.fill(0)
+                    oled.text("Apagando....", 10, 8)
+                    oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sleep(3)
                     
                 
         elif state == 3:
             if(Iniciar_temporizador):
                 uart.write(b'I') # Iniciar temporizador
+                uart.write(b'p') # play
                 Iniciar_temporizador = False
             oled.fill(0)
             oled.text(f"Enjuagando...", 20, 8)
@@ -204,6 +230,7 @@ if __name__ == '__main__':
                     lavar = False
                     enjuagar = False
                     centrifugar = False
+                    uart.write(b'H') # apagar leds de procesos
                     oled.fill(0)
                     oled.text(f"Proceso ", 20, 8)
                     oled.text(f"terminado", 20, 20)
@@ -233,12 +260,17 @@ if __name__ == '__main__':
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    encendido = False
                     oled.fill(0)
+                    oled.text("Apagando....", 10, 8)
+                    oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sleep(3)
                     
         elif state == 4:
             if(Iniciar_temporizador):
                 uart.write(b'I') # Iniciar temporizador
+                uart.write(b'p') # play
                 Iniciar_temporizador = False
             oled.fill(0)
             oled.text(f"Centrifugando...", 8, 8)
@@ -252,9 +284,11 @@ if __name__ == '__main__':
                 lavar = False
                 enjuagar = False
                 centrifugar = False
+                uart.write(b'H') # apagar leds de procesos
                 oled.fill(0)
                 oled.text(f"Proceso ", 20, 8)
                 oled.text(f"terminado", 20, 20)
+                
                 oled.show() 
                 sleep(3)                               
             if comando == 'K':
@@ -275,8 +309,12 @@ if __name__ == '__main__':
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    encendido = False
                     oled.fill(0)
+                    oled.text("Apagando....", 10, 8)
+                    oled.text("Hasta pronto", 10, 20)
                     oled.show()
+                    sleep(3)
                     
         elif state == 5:
             uart.write(b"P")
@@ -308,11 +346,15 @@ if __name__ == '__main__':
                     fsm.compute_next_state(ev['apagar'])  
                     state = fsm.get_current_state()
                     print(f"Estado: {state}")
+                    oled.fill(0)
+                    encendido = False
+                    oled.text("Apagando....", 10, 8)
+                    oled.text("Hasta pronto", 10, 20)
+                    oled.show()
+                    sleep(3)
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
-                    oled.fill(0)
-                    oled.show()
                         

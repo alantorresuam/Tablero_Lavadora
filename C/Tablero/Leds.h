@@ -102,3 +102,7 @@ void media();
  */
 void pesada();
 // FIN CARGA (liviana/media/pesada)
+
+void apagar_todos_los_leds();
+
+void apagar_procesos();
