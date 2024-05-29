@@ -6,13 +6,10 @@ def main():
     ds_sensor, roms = init_temperatura(pin_ds18x20)
 
     while True:
-        temperaturas = obtener_temperaturas(ds_sensor, roms)
-        
-        for temp in temperaturas:
-            temp_celsius = f"{temp:.2f}°C"
-            nivel = nivel_temperatura(temp)
-            print(f"Temperatura: {temp_celsius}, Nivel: {nivel}")
-        
+        temperatura = obtener_temperaturas(ds_sensor, roms)
+        temp_celsius = f"{temperatura:.2f}°C"
+        nivel = nivel_temperatura(temperatura)
+        print(f"Temperatura: {temp_celsius}, Nivel: {nivel}")
         sleep(1)
 
 if __name__ == "__main__":

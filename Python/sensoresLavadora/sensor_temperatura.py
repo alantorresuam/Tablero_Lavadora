@@ -26,8 +26,8 @@ def obtener_temperaturas(ds_sensor, roms):
     """
     ds_sensor.convert_temp()
     time.sleep_ms(750)
-    temps = [ds_sensor.read_temp(rom) for rom in roms]
-    return temps
+    temp = [ds_sensor.read_temp(roms[0])]
+    return temp
 
 
 def nivel_temperatura(temp):
