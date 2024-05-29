@@ -34,7 +34,7 @@ int main(){
     int pinsTime[] = {PIN_A, PIN_B, PIN_C, PIN_D, PIN_E, PIN_F, PIN_G, PIN_DIGITO1, PIN_DIGITO2};
     time_construct(pinsTime);
     time_init();
-    apagar();
+    apagarTemporizador();
 
 
     while (true){
@@ -43,7 +43,7 @@ int main(){
             uart_putc_raw(UART_ID, 'K'); // notificacion de entrada del teclado
             uart_putc_raw(UART_ID, opcion); // enviar entrada para cambio de estado
         }
-        
+
         if (uart_is_readable(UART_ID)) {
             char command = uart_getc(UART_ID);
             if (command == 'I') {

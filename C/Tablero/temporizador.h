@@ -33,4 +33,4 @@ int decrementar();
 /*@brief Metodo para actualizar el display*/
 void actualizar(int decenas, int unidades);
 
-void apagar();
+void apagarTemporizador();

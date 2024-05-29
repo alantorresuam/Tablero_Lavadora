@@ -98,7 +98,7 @@ void actualizar(int decenas, int unidades){
 
 }
 
-void apagar(){
+void apagarTemporizador(){
     gpio_put(digito1, 0);
     gpio_put(digito2, 0);
 }

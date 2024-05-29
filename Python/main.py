@@ -10,7 +10,7 @@ from shared_obj import ev, fsm
 # Configuración de pines UART
 uart = machine.UART(0, baudrate=9600, tx=machine.Pin(12), rx=machine.Pin(13))
 fsm_actions.init_fsm(fsm, ev)
-i2c = I2C(0, sda=Pin(18), scl=Pin(19), freq=400000)
+i2c = I2C(0, sda=Pin(16), scl=Pin(17), freq=400000)
 oled = SSD1306_I2C(128,64,i2c)
 oled.fill(0)
 oled.show()
@@ -32,8 +32,8 @@ Iniciar_temporizador = False
 
 if __name__ == '__main__':
     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
+    print(f"Estado: {state}")
     while(True):
-        print(state)
         comando = 'd'
         if uart.any():
             comando = uart.read(1).decode()
@@ -45,6 +45,7 @@ if __name__ == '__main__':
                 if(opcion_teclado == 'D'): # encender
                     fsm.compute_next_state(shared_obj.ev['encender'])  
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     inicio = 0;     
                     while inicio < 3:
                         oled.text("bienvenido", 30, 20)
@@ -102,25 +103,31 @@ if __name__ == '__main__':
                     if lavar:
                         fsm.compute_next_state(shared_obj.ev['lavar'])  # play lavar
                         state = fsm.get_current_state()
+                        print(f"Estado: {state}")
                         Iniciar_temporizador = True
                     elif enjuagar:
                         fsm.compute_next_state(shared_obj.ev['enjuagar'])  # play enjuagar
                         state = fsm.get_current_state()
+                        print(f"Estado: {state}")
                         Iniciar_temporizador = True
                     elif centrifugar:
                         fsm.compute_next_state(shared_obj.ev['centrifugar'])  # play centrifugar
                         state = fsm.get_current_state()
+                        print(f"Estado: {state}")
                         Iniciar_temporizador = True
 
                     
                 if(opcion_teclado == '#'): # apagar
                     fsm.compute_next_state(ev['apagar'])  
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    oled.fill(0)
+                    oled.show()
                     
         elif state == 2:
             if(Iniciar_temporizador):
@@ -137,6 +144,7 @@ if __name__ == '__main__':
                     fsm.compute_next_state(ev['lavado fin'])
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     lavar = False
                     enjuagar = False
                     centrifugar = False
@@ -147,10 +155,12 @@ if __name__ == '__main__':
                 elif enjuagar:
                     fsm.compute_next_state(ev['lavar y enjuagar'])
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     Iniciar_temporizador = True
                 elif centrifugar:
                     fsm.compute_next_state(ev['lavar y centrifugar'])
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     Iniciar_temporizador = True
 
                     
@@ -162,14 +172,18 @@ if __name__ == '__main__':
                     estado_anterior = 2
                     fsm.compute_next_state(ev['pausar'])
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                 if(opcion_teclado == '#'): # apagar
                     fsm.compute_next_state(ev['apagar'])  
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    oled.fill(0)
+                    oled.show()
                     
                 
         elif state == 3:
@@ -185,17 +199,20 @@ if __name__ == '__main__':
                 if (not centrifugar):
                     fsm.compute_next_state(ev['enjuagado fin'])
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
-                    state = fsm.get_current_state()  
+                    state = fsm.get_current_state()
+                    print(f"Estado: {state}")  
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     oled.fill(0)
-                    oled.text(f"Proceso terminado", 20, 8)
+                    oled.text(f"Proceso ", 20, 8)
+                    oled.text(f"terminado", 20, 20)
                     oled.show()   
                     sleep(3)               
                 else:
                     fsm.compute_next_state(ev['centrifugar'])
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     Iniciar_temporizador = True
                     
             if comando == 'K':
@@ -206,14 +223,18 @@ if __name__ == '__main__':
                     fsm.compute_next_state(ev['pausar'])
                     estado_anterior = 3
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                 if(opcion_teclado == '#'): # apagar
                     fsm.compute_next_state(ev['apagar'])  
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    oled.fill(0)
+                    oled.show()
                     
         elif state == 4:
             if(Iniciar_temporizador):
@@ -226,12 +247,14 @@ if __name__ == '__main__':
             if comando == 'T':
                 fsm.compute_next_state(ev['centrifugado fin'])
                 lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
-                state = fsm.get_current_state() 
+                state = fsm.get_current_state()
+                print(f"Estado: {state}") 
                 lavar = False
                 enjuagar = False
                 centrifugar = False
                 oled.fill(0)
-                oled.text(f"Proceso terminado", 20, 8)
+                oled.text(f"Proceso ", 20, 8)
+                oled.text(f"terminado", 20, 20)
                 oled.show() 
                 sleep(3)                               
             if comando == 'K':
@@ -242,14 +265,18 @@ if __name__ == '__main__':
                     fsm.compute_next_state(ev['pausar'])
                     estado_anterior = 4
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                 if(opcion_teclado == '#'): # apagar
                     fsm.compute_next_state(ev['apagar'])  
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    oled.fill(0)
+                    oled.show()
                     
         elif state == 5:
             uart.write(b"P")
@@ -265,21 +292,27 @@ if __name__ == '__main__':
                     if estado_anterior == 2:
                         fsm.compute_next_state(ev['lavando'])
                         state = fsm.get_current_state()
+                        print(f"Estado: {state}")
                         uart.write(b"p")
                     if estado_anterior == 3:
                         fsm.compute_next_state(ev['enjuagando'])
                         state = fsm.get_current_state()
+                        print(f"Estado: {state}")
                         uart.write(b"p")
                     if estado_anterior == 4:
                         fsm.compute_next_state(ev['centrifugando'])
                         state = fsm.get_current_state()
+                        print(f"Estado: {state}")
                         uart.write(b"p")
                 if(opcion_teclado == '#'): # apagar
                     fsm.compute_next_state(ev['apagar'])  
                     state = fsm.get_current_state()
+                    print(f"Estado: {state}")
                     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
                     lavar = False
                     enjuagar = False
                     centrifugar = False
                     uart.write("O")
+                    oled.fill(0)
+                    oled.show()
                         
