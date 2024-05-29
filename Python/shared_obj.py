@@ -1,4 +1,5 @@
 from fsm import FSM
+from Blynk import WasherPeripheral
 
 ev = {
     'encender' : 0, 
@@ -18,3 +19,5 @@ ev = {
     }
 
 fsm: FSM = FSM()
+
+washerPeripheral: WasherPeripheral = WasherPeripheral()
