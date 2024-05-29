@@ -6,7 +6,7 @@ from machine import I2C, Pin
 from ssd1306 import SSD1306_I2C
 from shared_obj import ev, fsm
 from shared_obj import washer_peripheral
-from sensor_temperatura import init_temperatura, obtener_temperaturas, nivel_temperatura
+from sensor_temperatura import init_temperatura, obtener_temperaturas
 from sonidos_zumbador import sonar_encendido, sonar_apagado, sonar_final, sonar_botón, sonar_cancion_1, sonar_cancion_2, sonar_cancion_3
 from sensor_nivel_agua import init_nivel_agua, leer_nivel_agua, interpretar_nivel_agua
 from time import sleep_ms
@@ -19,9 +19,8 @@ oled = SSD1306_I2C(128,64,i2c)
 oled.fill(0)
 oled.show()
 
-pin_ds18x20 = 18
-ds_sensor, roms = init_temperatura(pin_ds18x20)
 adc = init_nivel_agua()
+sensor, rom = init_temperatura(18)  
 
 state = 0
 
@@ -40,17 +39,15 @@ estado_anterior = 0
 Iniciar_temporizador = False
 
 
-washer_peripheral.update_temperature(10.00)
-
 
 if __name__ == '__main__':
     lavado, carga, temperatura = lavados[1], cargas[1], temperaturas[1]
     print(f"Estado: {state}")
-    
+    pin_ds18x20 = 18 
+    ds_sensor = init_temperatura(pin_ds18x20)
     while(True):
-        # Temperaturas = obtener_temperaturas(ds_sensor, roms)
-        # for temp in Temperaturas:
-        #     washer_peripheral.update_temperature(temp)
+        # temperatura = obtener_temperaturas(sensor, rom)[0]
+        # washer_peripheral.update_temperature(temperatura)
         valor = leer_nivel_agua(adc)
         washer_peripheral.update_value_10bit(valor)
             
@@ -60,17 +57,20 @@ if __name__ == '__main__':
         comando = 'd'
         if uart.any():
             comando = uart.read(1).decode()
+            while uart.any():
+                uart.read(1)
         if state == 0:
             encendido = False
             oled.fill(0)
             oled.show()
             if comando == 'K':
                 sonar_botón()
-                print("hola sebas")
                 sleep(1)
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
+                while uart.any():
+                    uart.read(1)
                 if(opcion_teclado == 'D'): # encender
                     fsm.compute_next_state(ev['encender'])  
                     state = fsm.get_current_state()
@@ -99,10 +99,11 @@ if __name__ == '__main__':
             oled.show()                            
             if comando == 'K':
                 sonar_botón()
-                print(f"hola")
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
+                while uart.any():
+                    uart.read(1)
                 if(opcion_teclado == '7'): # lavar
                     uart.write(b'L') # encender led lavar
                     lavar = True
@@ -215,6 +216,8 @@ if __name__ == '__main__':
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
+                while uart.any():
+                    uart.read(1)
                 if opcion_teclado == '0':
                     estado_anterior = 2
                     fsm.compute_next_state(ev['pausar'])
@@ -275,6 +278,8 @@ if __name__ == '__main__':
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
+                while uart.any():
+                    uart.read(1)
                 if opcion_teclado == '0':
                     fsm.compute_next_state(ev['pausar'])
                     estado_anterior = 3
@@ -326,6 +331,8 @@ if __name__ == '__main__':
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
+                while uart.any():
+                    uart.read(1)
                 if opcion_teclado == '0':
                     fsm.compute_next_state(ev['pausar'])
                     estado_anterior = 4
@@ -359,6 +366,8 @@ if __name__ == '__main__':
                 while uart.any() == 0:
                     continue
                 opcion_teclado = uart.read(1).decode()
+                while uart.any():
+                    uart.read(1)
                 if opcion_teclado == '*':
                     if estado_anterior == 2:
                         fsm.compute_next_state(ev['lavando'])

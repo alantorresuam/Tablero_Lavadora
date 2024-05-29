@@ -42,7 +42,7 @@ def beep(frequency, duration):
         time.sleep(duration)
     else:
         buzzer.freq(frequency)
-        buzzer.duty_u16(32768)  # Duty cycle al 50% en un rango de 16 bits
+        buzzer.duty_u16(45000)  # Duty cycle al 50% en un rango de 16 bits
         time.sleep(duration)
         buzzer.duty_u16(0)      # Apagar el buzzer
         time.sleep(0.05)

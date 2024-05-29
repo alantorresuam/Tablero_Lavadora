@@ -2,8 +2,6 @@ import time
 import network  
 import BlynkLib  
 
-temps = 100.0
-value_10bit = 70.0
 
 class WasherPeripheral:
     def __init__(self):
@@ -43,7 +41,3 @@ class WasherPeripheral:
             print('connected')  
             ip = self.wlan.ifconfig()[0]  
             print('IP: ', ip)  
-
-washer_peripheral = WasherPeripheral()
-washer_peripheral.update_temperature(temps)
-washer_peripheral.update_value_10bit(value_10bit)

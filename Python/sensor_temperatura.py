@@ -11,7 +11,7 @@ def init_temperatura(pin_ds18x20: int):
     """
     pin = machine.Pin(pin_ds18x20)
     ds_sensor = ds18x20.DS18X20(onewire.OneWire(pin))
-    roms = ds_sensor.scan()
+    roms = ds_sensor.scan()[0]
     return ds_sensor, roms
 
 def obtener_temperaturas(ds_sensor, roms):
@@ -26,7 +26,7 @@ def obtener_temperaturas(ds_sensor, roms):
     """
     ds_sensor.convert_temp()
     time.sleep_ms(750)
-    temps = [ds_sensor.read_temp(rom) for rom in roms]
+    temps = [ds_sensor.read_temp(roms)]
     return temps
 
 
