@@ -1,0 +1,9 @@
+#define PIN_A 10
+#define PIN_B 11
+#define PIN_C 14
+#define PIN_D 15
+#define PIN_E 16
+#define PIN_F 17
+#define PIN_G 18
+#define PIN_DIGITO1 27
+#define PIN_DIGITO2 28
